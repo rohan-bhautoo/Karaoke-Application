@@ -173,6 +173,26 @@ public class MediaBar extends VBox {
         setAlignment(Pos.CENTER);
         getChildren().addAll(timeHbox, buttonHbox);
 
+        // Providing functionality to time slider
+        player.currentTimeProperty().addListener(e -> updateValues());
+
+        // Add functionality to time slider
+        timeSlider.valueProperty().addListener(e -> {
+            if (timeSlider.isValueChanging()) {
+                // multiply duration by percentage calculated by slider position
+                player.seek(duration.multiply(timeSlider.getValue() / 100.0));
+            }
+        });
+
+        // Add functionality to volume slider
+        volumeSlider.valueProperty().addListener(e -> {
+            if (volumeSlider.isPressed()) {
+                player.setMute(false);
+                muteButton.setGraphic(muteImage);
+                player.setVolume(volumeSlider.getValue() / 100.0);
+            }
+        });
+
         // Adding functionality to buttons
         playButton.setOnAction(e -> {
             // Get status of player
@@ -183,10 +203,8 @@ public class MediaBar extends VBox {
             }
 
             if (status == status.PLAYING) {
-
                 // If video is playing
                 if (player.getCurrentTime().greaterThanOrEqualTo(player.getTotalDuration())) {
-
                     // If the player is at the end of video
                     // Restart the video
                     player.seek(player.getStartTime());
@@ -218,31 +236,13 @@ public class MediaBar extends VBox {
             }
 
         });
-
-        // Providing functionality to time slider
-        player.currentTimeProperty().addListener(e -> updateValues());
-
-        // Add functionality to time slider
-        timeSlider.valueProperty().addListener(e -> {
-            if (timeSlider.isValueChanging()) {
-                // multiply duration by percentage calculated by slider position
-                player.seek(duration.multiply(timeSlider.getValue() / 100.0));
-            }
-        });
-
-        // Add functionality to volume slider
-        volumeSlider.valueProperty().addListener(e -> {
-            if (volumeSlider.isPressed()) {
-                player.setMute(false);
-                muteButton.setGraphic(muteImage);
-                player.setVolume(volumeSlider.getValue() / 100.0);
-            }
-        });
     }
 
     // Stop media player
     public void stop() {
         player.stop();
+        player.setVolume(volumeSlider.getValue() / 100.0);
+        volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
     }
 
     // Set play rate to 2.0
@@ -291,8 +291,8 @@ public class MediaBar extends VBox {
 
             if (player.isMute() == true) {
                 volumeSlider.setValue(0);
-                volumePercentage.setText("0%");
-            } else if(volumeSlider.getValue() == 0) {
+                volumePercentage.setText((int) Math.round(volumeSlider.getValue() * 100) + "%");
+            } else if (volumeSlider.getValue() == 0) {
                 Image soundImg = new Image(getClass().getResourceAsStream("/Image/sound.png"));
                 ImageView soundImage = new ImageView(soundImg);
                 soundImage.setFitHeight(35);

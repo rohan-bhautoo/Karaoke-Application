@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="add14492-28ef-4e96-9385-41d77f9611a2" name="Default Changelist" comment="" />
+    <list default="true" id="add14492-28ef-4e96-9385-41d77f9611a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ConfirmBox.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MediaBar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
