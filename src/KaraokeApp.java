@@ -3,7 +3,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -87,9 +89,33 @@ public class KaraokeApp extends Application {
         vBox.setSpacing(20);
         vBox.setPadding(new Insets(10,10,10,10));
 
+        // Setting up right contents
+        Label playlistLabel = new Label("Playlist");
+        playlistLabel.setPadding(new Insets(5,5,5,5));
+
         // Creating a tableView
         songTable = new TableView();
         songTable.setPrefWidth(500);
+        songTable.prefHeightProperty().bind(window.heightProperty());
+
+        // Add to playlist button
+        Button add = new Button("+");
+        add.setStyle("-fx-font-size: 30");
+
+        // Remove from playlist button
+        Button remove = new Button("-");
+        remove.setStyle("-fx-font-size: 30");
+
+        // Adding buttons to HBox
+        HBox playlistBtn = new HBox();
+        playlistBtn.getChildren().addAll(add, remove);
+        playlistBtn.setSpacing(20);
+        playlistBtn.setPadding(new Insets(5,5,0,10));
+        playlistBtn.setAlignment(Pos.CENTER);
+
+        VBox playlist = new VBox();
+        playlist.setSpacing(5);
+        playlist.getChildren().addAll(playlistLabel, songTable, playlistBtn);
 
         // Adding file to media player
         player = new Player("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/narcos2.mp4");
@@ -97,7 +123,7 @@ public class KaraokeApp extends Application {
         // Setting up borderPane view
         player.setTop(menuBar);
         player.setLeft(vBox);
-        player.setRight(songTable);
+        player.setRight(playlist);
         Scene scene = new Scene(player);
         scene.getStylesheets().add("/Stylesheet/Stylesheet.css");
         window.setMaximized(true);

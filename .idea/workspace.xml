@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="add14492-28ef-4e96-9385-41d77f9611a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ConfirmBox.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MediaBar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KaraokeApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stylesheet/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stylesheet/Stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +81,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f57c1826-ae18-4af0-aec3-69e96dd2433a" name="Default Changelist" comment="" />
+      <changelist id="add14492-28ef-4e96-9385-41d77f9611a2" name="Default Changelist" comment="" />
       <created>1581967640092</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -128,6 +127,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Karaoke-Application" />
+    </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
     <state x="571" y="341" width="767" height="438" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582010311715">
@@ -208,25 +210,33 @@
     </state>
     <state width="1858" height="318" key="GridCell.Tab.1.right/0.34.1920.1046@0.34.1920.1046" timestamp="1582099370173" />
     <state width="1858" height="320" key="GridCell.Tab.1.right/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582020319011" />
-    <state x="310" y="104" width="1280" height="1046" key="SettingsEditor" timestamp="1582462065779">
+    <state x="310" y="104" width="1280" height="1046" key="SettingsEditor" timestamp="1583260257894">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="310" y="34" width="1280" height="1046" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1582099558144" />
-    <state x="310" y="104" width="1299" height="912" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582462065779" />
+    <state x="310" y="104" width="1299" height="912" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583260257894" />
     <state x="310" y="104" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1581974721855" />
     <state x="455" y="230" width="1000" height="661" key="Vcs.Push.Dialog.v2" timestamp="1582405213962">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="455" y="230" width="1000" height="661" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582405213962" />
-    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1582436747938">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1582095339695" />
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582405685140" />
-    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1582436747938" />
-    <state x="666" y="458" width="588" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582454071357">
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1583260209832">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="666" y="458" width="588" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582454071357" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1582538078985" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583260209832" />
+    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1582436747938" />
+    <state x="680" y="124" width="550" height="873" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583262526191">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="680" y="124" width="550" height="873" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583262526191" />
+    <state x="666" y="458" width="588" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583263954722">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="666" y="458" width="588" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583263954722" />
+    <state x="28" y="34" width="1854" height="1046" key="new project wizard" timestamp="1582810921949">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="28" y="34" width="1854" height="1046" key="new project wizard/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582810921949" />
   </component>
 </project>
