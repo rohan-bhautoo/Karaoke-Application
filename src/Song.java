@@ -4,6 +4,13 @@ public class Song {
     private double time;
     private String videoName;
 
+    public Song() {
+        this.title = " ";
+        this.artist = " ";
+        this.time = 0.0;
+        this.videoName = " ";
+    }
+
     public Song(String title, String artist, double time, String videoName) {
         this.title = title;
         this.artist = artist;

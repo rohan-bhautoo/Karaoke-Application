@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="add14492-28ef-4e96-9385-41d77f9611a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample_song_data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KaraokeApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Stylesheet/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stylesheet/Stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +152,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2560" y="250" width="630" height="586" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1582306307561" />
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583351668983">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583351668983" />
     <state x="452" y="34" width="1005" height="1046" key="CommitChangelistDialog2" timestamp="1582404887573">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
@@ -220,11 +224,11 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="455" y="230" width="1000" height="661" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1582405213962" />
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1583260209832">
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1583565397615">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1582538078985" />
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583260209832" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583565397615" />
     <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1582436747938" />
     <state x="680" y="124" width="550" height="873" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583262526191">
       <screen x="0" y="34" width="1920" height="1046" />
