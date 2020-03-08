@@ -24,6 +24,7 @@ public class MediaBar extends VBox {
     Slider timeSlider, volumeSlider;
     Button playButton, slowButton, fastButton, stopButton, previousButton, nextButton, muteButton;
     MediaPlayer player;
+    ViewLibrary viewLibrary;
     Duration duration;
 
     /**
@@ -32,8 +33,9 @@ public class MediaBar extends VBox {
      */
     public MediaBar(MediaPlayer play) {
         player = play;
+        viewLibrary = new ViewLibrary();
 
-        // Setting up bottom hbox for time
+        // Setting up bottom HBox for time
         timeHBox = new HBox();
         timeHBox.setPadding(new Insets(10,10,10,10));
         startTime = new Label("--:--");
@@ -45,7 +47,7 @@ public class MediaBar extends VBox {
         endTime = new Label("--:--");
 
         timeHBox.setHgrow(timeSlider, Priority.ALWAYS);
-        timeHBox.setMargin(timeSlider,new Insets(10,10,10,10));
+        timeHBox.setMargin(timeSlider,new Insets(8,10,10,10));
         timeHBox.getChildren().addAll(startTime, timeSlider, endTime);
 
         // Adding buttons to hbox
@@ -62,6 +64,7 @@ public class MediaBar extends VBox {
         playButton.setPrefHeight(50);
         playButton.setGraphic(playImage);
         buttonHBox.setMargin(playButton,new Insets(10,30,10,10));
+        playButton.setOnAction(e -> play());
 
         // Slow rate button
         slowButton = new Button("x0.5");
@@ -118,6 +121,29 @@ public class MediaBar extends VBox {
         nextButton.setGraphic(nextImage);
         buttonHBox.setMargin(nextButton,new Insets(10,5,10,10));
 
+        // Library Button
+        Image libraryImg = new Image(getClass().getResourceAsStream("/Image/musicLibrary.png"));
+        ImageView libraryImage = new ImageView(libraryImg);
+        libraryImage.setFitHeight(35);
+        libraryImage.setFitWidth(35);
+        Button viewLibraryBtn = new Button("Library");
+        viewLibraryBtn.setStyle("-fx-font-size:20");
+        viewLibraryBtn.setPrefWidth(150);
+        viewLibraryBtn.setGraphic(libraryImage);
+        buttonHBox.setMargin(viewLibraryBtn,new Insets(10,5,10,10));
+        viewLibraryBtn.setOnAction(e -> viewLibrary.viewLibrary());
+
+        // Playlist button
+        Image playlistImg = new Image(getClass().getResourceAsStream("/Image/musicPlaylist.png"));
+        ImageView playlistImage = new ImageView(playlistImg);
+        playlistImage.setFitHeight(35);
+        playlistImage.setFitWidth(35);
+        Button playlist = new Button("Playlist");
+        playlist.setStyle("-fx-font-size:20");
+        playlist.setPrefWidth(150);
+        playlist.setGraphic(playlistImage);
+        buttonHBox.setMargin(playlist,new Insets(10,5,10,10));
+
         // GridPane for volume controls
         pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
@@ -126,7 +152,7 @@ public class MediaBar extends VBox {
         // Setting different width values for each column.
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setHgrow(Priority.SOMETIMES);
-        col1.setPrefWidth(900);
+        col1.setPrefWidth(600);
         ColumnConstraints col2 = new ColumnConstraints();
         col2.setHgrow(Priority.ALWAYS);
         col2.setPrefWidth(250);
@@ -137,7 +163,7 @@ public class MediaBar extends VBox {
 
         // Volume label
         volumeLabel = new Label("Volume: ");
-        volumeLabel.setTranslateX(800);
+        volumeLabel.setTranslateX(500);
 
         // Slider for volume
         volumeSlider = new Slider();
@@ -167,13 +193,19 @@ public class MediaBar extends VBox {
         pane.add(volumePercentage,2,1);
         pane.add(muteButton,3 ,1);
 
-        buttonHBox.getChildren().addAll(playButton, previousButton, stopButton, nextButton, slowButton, fastButton, pane);
+        buttonHBox.getChildren().addAll(playButton, previousButton, stopButton, nextButton, slowButton, fastButton,
+                viewLibraryBtn, playlist, pane);
 
         // Align in center
         setAlignment(Pos.CENTER);
         getChildren().addAll(timeHBox, buttonHBox);
 
         // Providing functionality to time slider
+        player.setOnReady(() -> {
+            duration = player.getMedia().getDuration();
+            updateValues();
+        });
+
         player.currentTimeProperty().addListener(e -> updateValues());
 
         // Add functionality to time slider
@@ -184,6 +216,8 @@ public class MediaBar extends VBox {
             }
         });
 
+        player.currentTimeProperty().addListener(e -> updateValues());
+
         // Add functionality to volume slider
         volumeSlider.valueProperty().addListener(e -> {
             if (volumeSlider.isPressed()) {
@@ -192,9 +226,6 @@ public class MediaBar extends VBox {
                 player.setVolume(volumeSlider.getValue() / 100.0);
             }
         });
-
-        // Adding functionality to buttons
-        playButton.setOnAction(e -> play());
     }
 
     public void play() {
@@ -242,8 +273,20 @@ public class MediaBar extends VBox {
     // Stop media player
     public void stop() {
         player.stop();
-        player.setVolume(volumeSlider.getValue() / 100.0);
-        volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
+
+        // Get status of player
+        MediaPlayer.Status status = player.getStatus();
+
+        if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
+            return;
+        }
+
+        if (status == status.STOPPED) {
+            player.play();
+            player.setVolume(volumeSlider.getValue() / 100.0);
+            volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
+            updateValues();
+        }
     }
 
     // Set play rate to 2.0
@@ -285,25 +328,71 @@ public class MediaBar extends VBox {
      * Method to update slider's values.
      */
     protected void updateValues() {
-        Platform.runLater(() -> {
-            // Updating to the new time value
-            // This will move the slider while running your video
-            timeSlider.setValue(player.getCurrentTime().toMillis() * 100);
+        if (endTime != null && timeSlider != null && volumeSlider != null) {
+            Platform.runLater(() -> {
+                // Updating to the new time value
+                // This will move the slider while running your video
+                Duration currentTime = player.getCurrentTime();
+                startTime.setText(formatElapsedTime(currentTime));
+                endTime.setText(formatDurationTime(duration));
+                timeSlider.setDisable(duration.isUnknown());
+                if (!timeSlider.isDisabled()
+                        && duration.greaterThan(Duration.ZERO)
+                        && !timeSlider.isValueChanging()) {
+                    timeSlider.setValue(currentTime.divide(duration.toMillis()).toMillis()
+                            * 100.0);
+                }
 
-            if (player.isMute() == true) {
-                volumeSlider.setValue(0);
-                volumePercentage.setText((int) Math.round(volumeSlider.getValue() * 100) + "%");
-            } else if (volumeSlider.getValue() == 0) {
-                Image soundImg = new Image(getClass().getResourceAsStream("/Image/sound.png"));
-                ImageView soundImage = new ImageView(soundImg);
-                soundImage.setFitHeight(35);
-                soundImage.setFitWidth(35);
-                muteButton.setGraphic(soundImage);
+                if (player.isMute() == true) {
+                    volumeSlider.setValue(0);
+                    volumePercentage.setText((int) Math.round(volumeSlider.getValue() * 100) + "%");
+                } else if (volumeSlider.getValue() == 0) {
+                    Image soundImg = new Image(getClass().getResourceAsStream("/Image/sound.png"));
+                    ImageView soundImage = new ImageView(soundImg);
+                    soundImage.setFitHeight(35);
+                    soundImage.setFitWidth(35);
+                    muteButton.setGraphic(soundImage);
 
-                volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
-            } else {
-                volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
-            }
-        });
+                    volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
+                } else {
+                    volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
+                }
+            });
+        }
+    }
+
+    private static String formatElapsedTime(Duration elapsed) {
+        int intElapsed = (int) Math.floor(elapsed.toSeconds());
+        int elapsedHours = intElapsed / (60 * 60);
+        if (elapsedHours > 0) {
+            intElapsed -= elapsedHours * 60 * 60;
+        }
+        int elapsedMinutes = intElapsed / 60;
+        int elapsedSeconds = intElapsed - elapsedHours * 60 * 60
+                - elapsedMinutes * 60;
+
+        if (elapsedHours > 0) {
+            return String.format("%d:%02d:%02d", elapsedHours,
+                    elapsedMinutes, elapsedSeconds);
+        } else {
+            return String.format("%02d:%02d", elapsedMinutes,
+                    elapsedSeconds);
+        }
+    }
+
+    private static String formatDurationTime(Duration duration) {
+        int intDuration = (int) Math.floor(duration.toSeconds());
+        int durationHours = intDuration / (60 * 60);
+        if (durationHours > 0) {
+            intDuration -= durationHours * 60 * 60;
+        }
+        int durationMinutes = intDuration / 60;
+        int durationSeconds = intDuration - durationHours * 60 * 60
+                - durationMinutes * 60;
+        if (durationHours > 0) {
+            return String.format("%d:%02d:%02d", durationHours, durationMinutes, durationSeconds);
+        } else {
+            return String.format("%02d:%02d", durationMinutes, durationSeconds);
+        }
     }
 }
