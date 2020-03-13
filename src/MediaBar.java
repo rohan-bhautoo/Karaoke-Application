@@ -50,7 +50,7 @@ public class MediaBar extends VBox {
         timeHBox.setMargin(timeSlider,new Insets(8,10,10,10));
         timeHBox.getChildren().addAll(startTime, timeSlider, endTime);
 
-        // Adding buttons to hbox
+        // Adding buttons to HBox
         buttonHBox = new HBox();
         buttonHBox.setPadding(new Insets(10,10,10,10));
 
@@ -131,7 +131,12 @@ public class MediaBar extends VBox {
         viewLibraryBtn.setPrefWidth(150);
         viewLibraryBtn.setGraphic(libraryImage);
         buttonHBox.setMargin(viewLibraryBtn,new Insets(10,5,10,10));
-        viewLibraryBtn.setOnAction(e -> viewLibrary.viewLibrary());
+        viewLibraryBtn.setOnAction(e -> {
+            player.pause();
+            viewLibrary.viewLibrary();
+
+            viewLibrary.viewLibraryWindow.setOnCloseRequest(ev -> closeViewLibrary());
+        });
 
         // Playlist button
         Image playlistImg = new Image(getClass().getResourceAsStream("/Image/musicPlaylist.png"));
@@ -393,6 +398,15 @@ public class MediaBar extends VBox {
             return String.format("%d:%02d:%02d", durationHours, durationMinutes, durationSeconds);
         } else {
             return String.format("%02d:%02d", durationMinutes, durationSeconds);
+        }
+    }
+
+    public void closeViewLibrary() {
+        Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
+        if(answer) {
+            viewLibrary.viewLibraryWindow.close();
+
+            player.play();
         }
     }
 }

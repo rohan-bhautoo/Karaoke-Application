@@ -10,29 +10,31 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.security.auth.kerberos.KerberosKey;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewLibrary {
 
+    MediaBar mediaBar;
     Stage viewLibraryWindow;
     TableView<Song> libraryTable;
     ArrayList<Song> songArrayList;
     BufferedReader br;
+    FileChooser fileChooser;
 
     public void viewLibrary() {
-        viewLibraryWindow = new Stage();
+        //mediaBar.player.pause();
 
-        viewLibraryWindow.setOnCloseRequest(e -> {
-            e.consume();
-            closeLibraryWindow();
-        });
+        viewLibraryWindow = new Stage();
 
         libraryTable();
 
@@ -77,13 +79,8 @@ public class ViewLibrary {
         sortBtn.setStyle("-fx-font-size:20");
         sortBtn.setPrefWidth(200);
 
-        Button backBtn = new Button("Back");
-        backBtn.setStyle("-fx-font-size:20");
-        backBtn.setPrefWidth(120);
-        backBtn.setOnAction(e -> closeLibraryWindow());
-
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(addBtn, searchBtn, sortBtn, backBtn);
+        vBox.getChildren().addAll(addBtn, searchBtn, sortBtn);
         vBox.setAlignment(Pos.CENTER);
         vBox.setPrefWidth(280);
         vBox.setSpacing(20);
@@ -100,11 +97,33 @@ public class ViewLibrary {
         viewLibraryWindow.show();
     }
 
-    private void closeLibraryWindow() {
-        Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
-        if(answer) {
-            viewLibraryWindow.close();
+    private List<Song> songsLibrary() {
+        songArrayList = new ArrayList<>();
+
+        try {
+            br = new BufferedReader(new FileReader(chooser()));
+
+            String inputLine;
+
+            while ((inputLine = br.readLine()) != null) {
+                Song song = new Song();
+                String[] songList = inputLine.split("\t");
+
+                song.setTitle(songList[0]);
+                song.setArtist(songList[1]);
+                song.setTime(Double.parseDouble(songList[2]));
+                song.setVideoName(songList[3]);
+
+                songArrayList.add(song);
+            }
+
+            br.close();
+        } catch (Exception ex) {
+            //ErrorBox.error(ex);
+            ex.printStackTrace();
         }
+
+        return songArrayList;
     }
 
     private void libraryTable() {
@@ -136,37 +155,26 @@ public class ViewLibrary {
          */
         libraryTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        ObservableList<Song> songObservableList = FXCollections.observableArrayList(songsLibrary());
-        libraryTable.setItems(songObservableList);
+        ObservableList<Song> songList = FXCollections.observableArrayList(songsLibrary());
+        libraryTable.setItems(songList);
         libraryTable.getColumns().addAll(titleColumn, artistColumn, timeColumn);
     }
 
-    public List<Song> songsLibrary() {
-        songArrayList = new ArrayList<>();
+    private String chooser() {
+        fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("Library"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        File file = fileChooser.showOpenDialog(viewLibraryWindow);
 
-        try {
-            br = new BufferedReader(new FileReader("sample_song_data"));
-
-            String inputLine;
-
-            while ((inputLine = br.readLine()) != null) {
-                Song song = new Song();
-                String[] songList = inputLine.split("\t");
-
-                song.setTitle(songList[0]);
-                song.setArtist(songList[1]);
-                song.setTime(Double.parseDouble(songList[2]));
-                song.setVideoName(songList[3]);
-
-                songArrayList.add(song);
-            }
-
-            br.close();
-        } catch (Exception ex) {
-            ErrorBox.error(ex);
+        if (file != null) {
+            getLibrary(file.getAbsolutePath());
         }
 
-        return songArrayList;
+        return file.getAbsolutePath();
+    }
+
+    private String getLibrary(String library) {
+        return library;
     }
 
 }

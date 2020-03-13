@@ -2,31 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConfirmBox.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ErrorBox.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ErrorBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Image/musicLibrary.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Image/musicPlaylist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Image/song.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MediaBar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Song.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Stylesheet/ViewLibraryStylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewLibrary.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/ConfirmBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaraokeApp/ConfirmBox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/KaraokeApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaraokeApp/KaraokeApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/MediaBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaraokeApp/MediaBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaraokeApp/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaraokeApp/Song.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample_song_data" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/sample_song_data.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +48,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -77,6 +61,12 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Library" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -88,7 +78,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583667899626</updated>
-      <workItem from="1583667905166" duration="14288000" />
+      <workItem from="1583667905166" duration="14614000" />
+      <workItem from="1583756668322" duration="318000" />
+      <workItem from="1583870436075" duration="442000" />
+      <workItem from="1583924978823" duration="10195000" />
+      <workItem from="1583952172070" duration="5058000" />
+      <workItem from="1584002015095" duration="15364000" />
+      <workItem from="1584129605519" duration="10682000" />
     </task>
     <servers />
   </component>
@@ -99,22 +95,32 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1583668024829">
+    <state x="627" y="258" width="655" height="605" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1584011161277">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583668024829" />
+    <state x="627" y="258" width="655" height="605" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584011161277" />
+    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1583948646958">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583948646958" />
     <state x="315" y="34" width="1280" height="1046" key="SettingsEditor" timestamp="1583668030655">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="315" y="34" width="1280" height="1046" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583668030655" />
-    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1583667912349">
+    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1584129685464">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1583667912349" />
-    <state x="627" y="244" width="655" height="632" key="extract.method.dialog" timestamp="1583690698189">
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1583952449317" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584002352508" />
+    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1584129685464" />
+    <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584033993030">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="627" y="244" width="655" height="632" key="extract.method.dialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583690698189" />
+    <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584033993030" />
+    <state x="627" y="244" width="655" height="632" key="extract.method.dialog" timestamp="1583949993813">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="627" y="244" width="655" height="632" key="extract.method.dialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583949993813" />
     <state x="0" y="34" width="914" height="1046" key="find.popup" timestamp="1583696422401">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

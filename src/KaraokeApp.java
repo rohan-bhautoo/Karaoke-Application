@@ -2,7 +2,10 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 /**
  *
@@ -13,6 +16,7 @@ public class KaraokeApp extends Application {
 
     Stage window;
     Player player;
+    MenuBar menuBar;
 
     /**
      * Main method to launch application.
@@ -50,7 +54,7 @@ public class KaraokeApp extends Application {
         MenuItems(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
         //Menu Bar
-        MenuBar menuBar = new MenuBar();
+        menuBar = new MenuBar();
         menuBar.getMenus().addAll(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
         // Adding file to media player
