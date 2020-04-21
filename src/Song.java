@@ -1,4 +1,4 @@
-public class Song {
+public class Song implements Comparable<Song> {
     private String title;
     private String artist;
     private double time;
@@ -48,5 +48,18 @@ public class Song {
 
     public void setVideoName(String videoName) {
         this.videoName = videoName;
+    }
+
+    @Override
+    public String toString() {
+        return "Title: " + title + "\n" +
+                "Artist: " + artist + "\n" +
+                "Time: " + time + "\n" +
+                "VideoName: " + videoName;
+    }
+
+    @Override
+    public int compareTo(Song song) {
+        return 0;
     }
 }

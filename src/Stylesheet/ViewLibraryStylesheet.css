@@ -8,6 +8,6 @@ Slider {
     -fx-control-inner-background: #181716;
 }
 
-VBox {
+HBox {
     -fx-background-color: #A9A9A9;
 }

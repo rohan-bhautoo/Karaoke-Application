@@ -1,11 +1,16 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.FileChooser;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -17,6 +22,7 @@ public class KaraokeApp extends Application {
     Stage window;
     Player player;
     MenuBar menuBar;
+    public static String FilePath;
 
     /**
      * Main method to launch application.
@@ -32,6 +38,25 @@ public class KaraokeApp extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+
+        Parameters p = this.getParameters();
+        Map<String, String> namedParams = p.getNamed();
+        List<String> rawArguments = p.getRaw();
+
+        if (rawArguments.size() != 1) {
+            System.out.println("Invalid Command!\n" +
+                    "Usage: java KaraokeApp --filePath=");
+            System.exit(1);
+        } else if (namedParams.size() != 1) {
+            System.out.println("File path not specified.\n" +
+                    "Usage: java KaraokeApp --filePath=");
+            System.exit(1);
+        }
+
+        for (Map.Entry<String,String> entry : namedParams.entrySet()) {
+            FilePath = entry.getValue();
+        }
+
         window = primaryStage;
         window.setTitle("Karaoke Media Player");
 
@@ -58,7 +83,7 @@ public class KaraokeApp extends Application {
         menuBar.getMenus().addAll(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
         // Adding file to media player
-        player = new Player("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/narcos2.mp4");
+        player = new Player("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/test.mp4");
 
         // Setting up borderPane view
         player.setTop(menuBar);

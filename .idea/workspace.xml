@@ -2,16 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Video/test.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/sort.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LibraryFileIndex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SET.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ST.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Stopwatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Video/narcos2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Video/stars.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Library/sample_song_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/sample_song_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scenebuilder/Application.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stylesheet/ViewLibraryStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stylesheet/ViewLibraryStylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample_song_data" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library/sample_song_data.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -37,13 +53,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1YqQyUt8fdi6uj6VyONLNAIqY1H" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -56,7 +74,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="/opt/SceneBuilder/SceneBuilder" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -85,11 +103,31 @@
       <workItem from="1583952172070" duration="5058000" />
       <workItem from="1584002015095" duration="15364000" />
       <workItem from="1584129605519" duration="10682000" />
+      <workItem from="1584174716842" duration="12670000" />
+      <workItem from="1585074917104" duration="53000" />
+      <workItem from="1585075055430" duration="1209000" />
+      <workItem from="1585216787809" duration="601000" />
+      <workItem from="1585229514725" duration="474000" />
+      <workItem from="1585230163641" duration="203000" />
+      <workItem from="1585246054676" duration="909000" />
+      <workItem from="1585329311839" duration="79000" />
+      <workItem from="1586426001970" duration="3602000" />
+      <workItem from="1586880783016" duration="10222000" />
+      <workItem from="1586936815639" duration="10984000" />
+      <workItem from="1587019906789" duration="7824000" />
+      <workItem from="1587051879730" duration="14505000" />
+      <workItem from="1587102441673" duration="8194000" />
+      <workItem from="1587206080481" duration="245000" />
+      <workItem from="1587206450481" duration="112000" />
+      <workItem from="1587206577955" duration="2461000" />
+      <workItem from="1587304817021" duration="3553000" />
+      <workItem from="1587348006935" duration="19338000" />
+      <workItem from="1587484763132" duration="625000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -99,31 +137,73 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="627" y="258" width="655" height="605" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584011161277" />
-    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1583948646958">
+    <state x="475" y="172" width="960" height="777" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1586882915807">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583948646958" />
+    <state x="475" y="172" width="960" height="777" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1586882915807" />
+    <state x="361" y="200" width="439" height="752" key="#com.intellij.ide.util.MemberChooser" timestamp="1587117170374">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="361" y="200" width="701" height="728" key="#com.intellij.ide.util.MemberChooser/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587117170374" />
+    <state x="3102" y="118" width="439" height="752" key="#com.intellij.ide.util.MemberChooser/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1587060126651" />
+    <state x="721" y="200" width="468" height="721" key="#com.intellij.ide.util.MemberChooser/0.34.3840.1046@0.34.3840.1046" timestamp="1586987556700" />
+    <state x="361" y="200" width="701" height="721" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585246374196" />
+    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587206139233">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587206139233" />
+    <state x="689" y="34" width="1074" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586986642248">
+      <screen x="0" y="34" width="3840" height="1046" />
+    </state>
+    <state x="689" y="34" width="1074" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.3840.1046@0.34.3840.1046" timestamp="1586986642248" />
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1587364543442">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587364543442" />
+    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1587207974840">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="685" y="258" key="FileChooserDialogImpl/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587207974840" />
+    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1586436465843" />
+    <state x="2582" y="143" width="586" height="801" key="RollbackChangesDialog" timestamp="1587064464153">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2582" y="143" width="586" height="801" key="RollbackChangesDialog/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1587064464153" />
     <state x="315" y="34" width="1280" height="1046" key="SettingsEditor" timestamp="1583668030655">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="315" y="34" width="1280" height="1046" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583668030655" />
-    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1584129685464">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1587206131073">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1583952449317" />
-    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584002352508" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587206131073" />
+    <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1587019908857" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1586936814681" />
+    <state x="2444" y="353" key="com.intellij.ide.util.TipDialog/0.34.3840.1046@0.34.3840.1046" timestamp="1584176717732" />
+    <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585329323773" />
     <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1584129685464" />
     <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584033993030">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584033993030" />
-    <state x="627" y="244" width="655" height="632" key="extract.method.dialog" timestamp="1583949993813">
+    <state x="627" y="244" width="716" height="632" key="extract.method.dialog" timestamp="1587416025382">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
+    <state x="627" y="244" width="716" height="632" key="extract.method.dialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587416025382" />
     <state x="627" y="244" width="655" height="632" key="extract.method.dialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583949993813" />
     <state x="0" y="34" width="914" height="1046" key="find.popup" timestamp="1583696422401">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="0" y="34" width="914" height="1046" key="find.popup/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583696422401" />
+    <state x="28" y="38" width="1854" height="1042" key="new project wizard" timestamp="1587207976897">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="28" y="38" key="new project wizard/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587207976897" />
+    <state x="28" y="38" width="1854" height="1042" key="new project wizard/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585329399396" />
+    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1587362551491">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587362551491" />
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.3840.1046@0.34.3840.1046" timestamp="1584179591117" />
   </component>
 </project>
