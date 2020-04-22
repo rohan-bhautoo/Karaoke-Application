@@ -1,5 +1,8 @@
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,13 +18,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ViewLibrary {
 
     Stage viewLibraryWindow;
-    TableView<ST<String, SET<Song>>> librarySongTable;
+    TableView<String> librarySongTable;
     LibraryFileIndex libraryFileIndex;
     TextField searchTextField;
+    Song song;
 
     public void viewLibrary() {
         viewLibraryWindow = new Stage();
@@ -32,7 +37,7 @@ public class ViewLibrary {
         librarySongTable.setOnMouseClicked(e -> {
             if (e.getClickCount() > 1) {
                 if(librarySongTable.getSelectionModel().getSelectedItem() != null) {
-                    ST<String, SET<Song>> song =  librarySongTable.getSelectionModel().getSelectedItem();
+                    String song =  librarySongTable.getSelectionModel().getSelectedItem();
 
                     Alert message = new Alert(Alert.AlertType.INFORMATION);
                     message.initStyle(StageStyle.UTILITY);
@@ -107,18 +112,6 @@ public class ViewLibrary {
     }
 
     private void libraryTable() {
-        // Title column
-        TableColumn<ST<String, SET<Song>>, String> titleColumn = new TableColumn<>("Title");
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
-        // Artist column
-        TableColumn<ST<String, SET<Song>>, String> artistColumn = new TableColumn<>("Artist");
-        artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
-
-        // Time column
-        TableColumn<ST<String, SET<Song>>, Double> timeColumn = new TableColumn<>("Time(s)");
-        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-
         // Creating tableView
         librarySongTable = new TableView<>();
 
@@ -136,20 +129,24 @@ public class ViewLibrary {
         librarySongTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         libraryFileIndex = new LibraryFileIndex();
-        ST<String, SET<Song>> st = libraryFileIndex.songLibrary();
+        ST<String, SET<Song>> st = libraryFileIndex.symbolTableSong();
+        List<String> aList = new ArrayList<>();
+
+        addColumn(librarySongTable);
 
         for (String s : st.keys()) {
-            System.out.println(s);
+            aList.add(st.get(s).toString());
         }
 
-        /*ArrayList<ST<String, SET<Song>>> arrayList = new ArrayList<>();
-        arrayList.add(libraryFileIndex.songLibrary());
-        System.out.println(arrayList.toString());*/
+        ObservableList<String> songsList = FXCollections.observableArrayList(aList);
 
-        //ObservableList<ST<String, SET<Song>>> songList = FXCollections.observableArrayList(arrayList);
+        librarySongTable.setItems(songsList);
+    }
 
-        //librarySongTable.setItems(songList);
-        librarySongTable.getColumns().addAll(titleColumn, artistColumn, timeColumn);
+    private static void addColumn(TableView<String> tableView) {
+        TableColumn<String, String> column = new TableColumn<>("Song");
+        column.setCellValueFactory(param -> new SimpleStringProperty(param.getValue()));
+        tableView.getColumns().add(column);
     }
 
     private void search() {
@@ -168,8 +165,8 @@ public class ViewLibrary {
             songInformation.setTitle("Information");
             songInformation.setHeaderText(null);
 
-            if (libraryFileIndex.songLibrary().contains(query)) {
-                SET<Song> set = libraryFileIndex.songLibrary().get(query);
+            if (libraryFileIndex.symbolTableSong().contains(query)) {
+                SET<Song> set = libraryFileIndex.symbolTableSong().get(query);
                 songInformation.setContentText(set.toString());
                 System.out.println("Took " + timer.stop() + " seconds");
 

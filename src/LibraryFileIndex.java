@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class LibraryFileIndex {
 
-    public ST<String, SET<Song>> songLibrary() {
-        ViewLibrary viewLibrary = new ViewLibrary();
+    public ST<String, SET<Song>> symbolTableSong() {
         // key = word, value = Song
         ST<String, SET<Song>> st = new ST<>();
 
@@ -25,15 +24,18 @@ public class LibraryFileIndex {
                 song.setVideoName(word[3]);
 
                 st.put(song.getTitle(), new SET<>());
-                //StdOut.println(st.max());
-                //SET<File> set = st.get(song.getTitle());
                 SET<Song> set = st.get(song.getTitle());
                 set.add(song);
+                songSET(set);
             }
         } catch (IOException exception) {
             ErrorBox.error(exception);
         }
 
         return st;
+    }
+
+    public SET<Song> songSET(SET<Song> set) {
+        return set;
     }
 }
