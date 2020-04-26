@@ -1,0 +1,13 @@
+Button {
+    -fx-background-color: #181716;
+    -fx-text-fill: #A9A9A9;
+    -fx-font-size: 16;
+}
+
+Slider {
+    -fx-control-inner-background: #181716;
+}
+
+HBox {
+    -fx-background-color: #A9A9A9;
+}

@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,34 +11,40 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ViewLibrary {
 
-    Stage viewLibraryWindow;
-    TableView<String> librarySongTable;
-    LibraryFileIndex libraryFileIndex;
+    Stage viewLibraryWindow, addSongsWindow;
+    TableView<Song> librarySongTable;
+    LibraryFileIndex libraryFileIndex = new LibraryFileIndex();
+    Playlist playlist = new Playlist();
     TextField searchTextField;
-    Song song;
+    TextField titleInput, artistInput, timeInput, videoNameInput;
+    String[] word;
 
     public void viewLibrary() {
         viewLibraryWindow = new Stage();
         viewLibraryWindow.setTitle("Library");
+        viewLibraryWindow.initModality(Modality.APPLICATION_MODAL);
 
         libraryTable();
 
         librarySongTable.setOnMouseClicked(e -> {
             if (e.getClickCount() > 1) {
                 if(librarySongTable.getSelectionModel().getSelectedItem() != null) {
-                    String song =  librarySongTable.getSelectionModel().getSelectedItem();
+                    Song song =  librarySongTable.getSelectionModel().getSelectedItem();
 
                     Alert message = new Alert(Alert.AlertType.INFORMATION);
                     message.initStyle(StageStyle.UTILITY);
@@ -55,7 +62,13 @@ public class ViewLibrary {
                     songImage.setFitHeight(60);
                     songImage.setFitWidth(60);
                     message.setGraphic(songImage);
-                    message.showAndWait();
+                    Optional<ButtonType> result = message.showAndWait();
+
+                    if (result.isPresent() && result.get() == buttonTypeAdd) {
+                        //playlist.playlist().add(song);
+                        Playlist.songs.addLast(song);
+                        //System.out.println(playlist.playlist().toString());
+                    }
                 }
             }
         });
@@ -83,20 +96,13 @@ public class ViewLibrary {
         Button addBtn = new Button("");
         addBtn.setStyle("-fx-font-size:20");
         addBtn.setGraphic(addImage);
-
-        Image sortImg = new Image(getClass().getResourceAsStream("/Image/sort.png"));
-        ImageView sortImage = new ImageView(sortImg);
-        sortImage.setFitHeight(30);
-        sortImage.setFitWidth(30);
-        Button sortBtn = new Button("");
-        sortBtn.setStyle("-fx-font-size:20");
-        sortBtn.setGraphic(sortImage);
+        addBtn.setOnAction(e -> addSongs());
 
         final Pane spacer = new Pane();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(searchTextField, searchBtn, spacer, addBtn, sortBtn);
+        hBox.getChildren().addAll(searchTextField, searchBtn, spacer, addBtn);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(4);
         hBox.setPadding(new Insets(10,10,10,10));
@@ -112,6 +118,18 @@ public class ViewLibrary {
     }
 
     private void libraryTable() {
+        TableColumn<Song, String> titleColumn = new TableColumn<>("Title");
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        TableColumn<Song, String> artistColumn = new TableColumn<>("Artist");
+        artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
+
+        TableColumn<Song, Double> timeColumn = new TableColumn<>("Time");
+        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        TableColumn<Song, String> videoColumn = new TableColumn<>("Video");
+        videoColumn.setCellValueFactory(new PropertyValueFactory<>("videoName"));
+
         // Creating tableView
         librarySongTable = new TableView<>();
 
@@ -128,29 +146,32 @@ public class ViewLibrary {
          */
         librarySongTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        libraryFileIndex = new LibraryFileIndex();
-        ST<String, SET<Song>> st = libraryFileIndex.symbolTableSong();
-        List<String> aList = new ArrayList<>();
+        getSongs();
 
-        addColumn(librarySongTable);
+        librarySongTable.getColumns().addAll(titleColumn, artistColumn, timeColumn, videoColumn);
+    }
+
+    private void getSongs() {
+        ST<String, SET<Song>> st = libraryFileIndex.symbolTableSong();
+        ObservableList<Song> songsList = FXCollections.observableArrayList();
 
         for (String s : st.keys()) {
-            aList.add(st.get(s).toString());
-        }
+            word = st.get(s).toString().split("\n");
 
-        ObservableList<String> songsList = FXCollections.observableArrayList(aList);
+            Song song = new Song();
+
+            song.setTitle(word[0]);
+            song.setArtist(word[1]);
+            song.setTime(Double.parseDouble(word[2]));
+            song.setVideoName(word[3]);
+
+            songsList.add(song);
+        }
 
         librarySongTable.setItems(songsList);
     }
 
-    private static void addColumn(TableView<String> tableView) {
-        TableColumn<String, String> column = new TableColumn<>("Song");
-        column.setCellValueFactory(param -> new SimpleStringProperty(param.getValue()));
-        tableView.getColumns().add(column);
-    }
-
     private void search() {
-        libraryFileIndex = new LibraryFileIndex();
         final int DELAY = 500;
 
         Stopwatch timer = new Stopwatch();
@@ -160,38 +181,140 @@ public class ViewLibrary {
         try {
             String query = searchTextField.getText();
 
+            SET<Song> set;
+
             Alert songInformation = new Alert(Alert.AlertType.INFORMATION);
             songInformation.initStyle(StageStyle.UTILITY);
             songInformation.setTitle("Information");
             songInformation.setHeaderText(null);
 
+            ButtonType buttonTypeAdd = new ButtonType("Add");
+            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            songInformation.getButtonTypes().setAll(buttonTypeAdd, buttonTypeCancel);
+
             if (libraryFileIndex.symbolTableSong().contains(query)) {
-                SET<Song> set = libraryFileIndex.symbolTableSong().get(query);
+                set = libraryFileIndex.symbolTableSong().get(query);
                 songInformation.setContentText(set.toString());
                 System.out.println("Took " + timer.stop() + " seconds");
-
-                ButtonType buttonTypeAdd = new ButtonType("Add");
-                ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-                songInformation.getButtonTypes().setAll(buttonTypeAdd, buttonTypeCancel);
 
                 Image songImg = new Image(getClass().getResourceAsStream("/Image/song.png"));
                 ImageView songImage = new ImageView(songImg);
                 songImage.setFitHeight(60);
                 songImage.setFitWidth(60);
                 songInformation.setGraphic(songImage);
+
+                Optional<ButtonType> result = songInformation.showAndWait();
+
+                if (result.isPresent() && result.get() == buttonTypeAdd) {
+
+                    for (Song s : set) {
+                        Song song = new Song();
+
+                        song.setTitle(s.getTitle());
+                        song.setArtist(s.getArtist());
+                        song.setTime(s.getTime());
+                        song.setVideoName(s.getVideoName());
+
+                        Playlist.songs.addLast(song);
+                    }
+                }
             } else {
                 songInformation.setContentText("Not Found!");
                 ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
                 songInformation.getButtonTypes().setAll(cancel);
+
+                songInformation.showAndWait();
             }
-            songInformation.showAndWait();
 
             Thread.sleep(DELAY);
         } catch(InterruptedException ex) {
             System.out.println("Sleep interrupted");
         }
+    }
+
+    private void addSongs() {
+        addSongsWindow = new Stage();
+        addSongsWindow.setTitle("Add Song(s)");
+        addSongsWindow.initModality(Modality.APPLICATION_MODAL);
+
+        titleInput = new TextField();
+        titleInput.setPromptText("Enter title...");
+        titleInput.setPrefSize(50, 50);
+
+        artistInput = new TextField();
+        artistInput.setPromptText("Enter artist's name...");
+        artistInput.setPrefSize(50, 50);
+
+        timeInput = new TextField();
+        timeInput.setPromptText("Enter time of song...");
+        timeInput.setPrefSize(50, 50);
+
+        videoNameInput = new TextField();
+        videoNameInput.setPromptText("Enter video name...");
+        videoNameInput.setPrefSize(50, 50);
+
+        Button addButton = new Button("Add");
+        addButton.setPrefSize(100, 50);
+        addButton.setOnAction(e -> addToLibrary());
+
+        Button backButton = new Button("Back");
+        backButton.setPrefSize(100, 50);
+        backButton.setOnAction(e -> {
+            addSongsWindow.close();
+        });
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(addButton, backButton);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setSpacing(10);
+
+        //Whole Layout
+        VBox layout = new VBox();
+        layout.getChildren().addAll(titleInput, artistInput, timeInput, videoNameInput, hBox);
+        layout.setPadding(new Insets(10, 10, 10, 10));
+        layout.setSpacing(10);
+
+        Scene scene = new Scene(layout, 500, 250);
+        addSongsWindow.setScene(scene);
+        addSongsWindow.show();
+    }
+
+    private void addToLibrary() {
+        Song song = new Song();
+
+        song.setTitle(titleInput.getText());
+        song.setArtist(artistInput.getText());
+        song.setTime(Double.parseDouble(timeInput.getText()));
+        song.setVideoName(videoNameInput.getText());
+
+        Stopwatch timer = new Stopwatch();
+
+        timer.start();
+
+        ST<String, SET<Song>> st = libraryFileIndex.symbolTableSong();
+        st.put(song.getTitle(), new SET<>());
+
+        SET<Song> songSET = st.get(song.getTitle());
+        songSET.add(song);
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(KaraokeApp.FilePath, true));
+
+            for (Song newSong : songSET) {
+                writer.newLine();
+                writer.write(newSong.getTitle() + "\t" + newSong.getArtist() + "\t" + newSong.getTime() +
+                        "\t" + newSong.getVideoName());
+            }
+            writer.close();
+            System.out.println("Took " + timer.stop() + " seconds");
+        } catch (IOException ex) {
+            ErrorBox.error(ex);
+        }
+
+        librarySongTable.getItems().clear();
+        getSongs();
     }
 
 }

@@ -25,6 +25,7 @@ public class MediaBar extends VBox {
     Button playButton, slowButton, fastButton, stopButton, previousButton, nextButton, muteButton;
     MediaPlayer player;
     ViewLibrary viewLibrary;
+    Playlist playlist;
     Duration duration;
 
     /**
@@ -34,6 +35,7 @@ public class MediaBar extends VBox {
     public MediaBar(MediaPlayer play) {
         player = play;
         viewLibrary = new ViewLibrary();
+        playlist = new Playlist();
 
         // Setting up bottom HBox for time
         timeHBox = new HBox();
@@ -135,7 +137,10 @@ public class MediaBar extends VBox {
             player.pause();
             viewLibrary.viewLibrary();
 
-            viewLibrary.viewLibraryWindow.setOnCloseRequest(ev -> closeViewLibrary());
+            viewLibrary.viewLibraryWindow.setOnCloseRequest(ev -> {
+                ev.consume();
+                closeViewLibrary();
+            });
         });
 
         // Playlist button
@@ -143,11 +148,20 @@ public class MediaBar extends VBox {
         ImageView playlistImage = new ImageView(playlistImg);
         playlistImage.setFitHeight(35);
         playlistImage.setFitWidth(35);
-        Button playlist = new Button("Playlist");
-        playlist.setStyle("-fx-font-size:20");
-        playlist.setPrefWidth(150);
-        playlist.setGraphic(playlistImage);
-        buttonHBox.setMargin(playlist,new Insets(10,5,10,10));
+        Button playlistBtn = new Button("Playlist");
+        playlistBtn.setStyle("-fx-font-size:20");
+        playlistBtn.setPrefWidth(150);
+        playlistBtn.setGraphic(playlistImage);
+        buttonHBox.setMargin(playlistBtn,new Insets(10,5,10,10));
+        playlistBtn.setOnAction(e -> {
+            player.pause();
+            playlist.viewPlaylist();
+
+            playlist.playlistWindow.setOnCloseRequest(ev -> {
+                ev.consume();
+                closePlaylist();
+            });
+        });
 
         // GridPane for volume controls
         pane = new GridPane();
@@ -199,7 +213,7 @@ public class MediaBar extends VBox {
         pane.add(muteButton,3 ,1);
 
         buttonHBox.getChildren().addAll(playButton, previousButton, stopButton, nextButton, slowButton, fastButton,
-                viewLibraryBtn, playlist, pane);
+                viewLibraryBtn, playlistBtn, pane);
 
         // Align in center
         setAlignment(Pos.CENTER);
@@ -241,7 +255,7 @@ public class MediaBar extends VBox {
             return;
         }
 
-        if (status == status.PLAYING) {
+        if (status == MediaPlayer.Status.PLAYING) {
             // If video is playing
             if (player.getCurrentTime().greaterThanOrEqualTo(player.getTotalDuration())) {
                 // If the player is at the end of video
@@ -263,7 +277,7 @@ public class MediaBar extends VBox {
         }
 
         // If the video is stopped, halted or paused
-        if (status == MediaPlayer.Status.HALTED || status == MediaPlayer.Status.STOPPED || status == MediaPlayer.Status.PAUSED) {
+        if (status == MediaPlayer.Status.STOPPED || status == MediaPlayer.Status.PAUSED) {
             player.play();
             player.setRate(1.0);
 
@@ -286,7 +300,7 @@ public class MediaBar extends VBox {
             return;
         }
 
-        if (status == status.STOPPED) {
+        if (status == MediaPlayer.Status.STOPPED) {
             player.play();
             player.setVolume(volumeSlider.getValue() / 100.0);
             volumePercentage.setText((int) Math.round(player.getVolume() * 100) + "%");
@@ -320,7 +334,7 @@ public class MediaBar extends VBox {
     public void mute() {
         player.setMute(true);
 
-        if (player.isMute() == true) {
+        if (player.isMute()) {
             Image soundImg = new Image(getClass().getResourceAsStream("/Image/sound.png"));
             ImageView soundImage = new ImageView(soundImg);
             soundImage.setFitHeight(35);
@@ -348,7 +362,7 @@ public class MediaBar extends VBox {
                             * 100.0);
                 }
 
-                if (player.isMute() == true) {
+                if (player.isMute()) {
                     volumeSlider.setValue(0);
                     volumePercentage.setText((int) Math.round(volumeSlider.getValue() * 100) + "%");
                 } else if (volumeSlider.getValue() == 0) {
@@ -405,6 +419,15 @@ public class MediaBar extends VBox {
         Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
         if(answer) {
             viewLibrary.viewLibraryWindow.close();
+
+            player.play();
+        }
+    }
+
+    public void closePlaylist() {
+        Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
+        if(answer) {
+            playlist.playlistWindow.close();
 
             player.play();
         }

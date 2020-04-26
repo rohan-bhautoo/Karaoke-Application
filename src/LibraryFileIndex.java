@@ -26,16 +26,11 @@ public class LibraryFileIndex {
                 st.put(song.getTitle(), new SET<>());
                 SET<Song> set = st.get(song.getTitle());
                 set.add(song);
-                songSET(set);
             }
         } catch (IOException exception) {
             ErrorBox.error(exception);
         }
 
         return st;
-    }
-
-    public SET<Song> songSET(SET<Song> set) {
-        return set;
     }
 }

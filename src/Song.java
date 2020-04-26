@@ -52,10 +52,7 @@ public class Song implements Comparable<Song> {
 
     @Override
     public String toString() {
-        return "Title: " + title + "\n" +
-                "Artist: " + artist + "\n" +
-                "Time: " + time + "\n" +
-                "VideoName: " + videoName;
+        return title + "\n" + artist + "\n" + time + "\n" + videoName;
     }
 
     @Override

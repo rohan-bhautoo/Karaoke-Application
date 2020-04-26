@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/LinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/ConfirmBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/KaraokeApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/META-INF/KaraokeApp.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/MediaBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Scenebuilder/Application.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Song.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/sample_song_data" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LibraryFileIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryFileIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,20 +26,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,7 +107,10 @@
       <workItem from="1587304817021" duration="3553000" />
       <workItem from="1587348006935" duration="19338000" />
       <workItem from="1587484763132" duration="13520000" />
-      <workItem from="1587540140222" duration="2071000" />
+      <workItem from="1587540140222" duration="20280000" />
+      <workItem from="1587692930519" duration="9941000" />
+      <workItem from="1587782789372" duration="22760000" />
+      <workItem from="1587868607560" duration="10794000" />
     </task>
     <servers />
   </component>
@@ -142,10 +144,10 @@
       <screen x="0" y="34" width="3840" height="1046" />
     </state>
     <state x="689" y="34" width="1074" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.3840.1046@0.34.3840.1046" timestamp="1586986642248" />
-    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1587496101391">
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1587800621732">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587496101391" />
+    <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587800621732" />
     <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1587207974840">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
@@ -190,10 +192,10 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="540" y="250" key="run.anything.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587501724625" />
-    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1587362551491">
+    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1587786658062">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587362551491" />
+    <state x="270" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587786658062" />
     <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.3840.1046@0.34.3840.1046" timestamp="1584179591117" />
   </component>
 </project>
