@@ -1,9 +1,5 @@
-import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,13 +11,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class ViewLibrary {
@@ -29,7 +21,6 @@ public class ViewLibrary {
     Stage viewLibraryWindow, addSongsWindow;
     TableView<Song> librarySongTable;
     LibraryFileIndex libraryFileIndex = new LibraryFileIndex();
-    Playlist playlist = new Playlist();
     TextField searchTextField;
     TextField titleInput, artistInput, timeInput, videoNameInput;
     String[] word;
@@ -48,7 +39,7 @@ public class ViewLibrary {
 
                     Alert message = new Alert(Alert.AlertType.INFORMATION);
                     message.initStyle(StageStyle.UTILITY);
-                    message.setTitle("Information");
+                    message.setTitle("Song");
                     message.setHeaderText(null);
                     message.setContentText(song.toString());
 
@@ -59,15 +50,13 @@ public class ViewLibrary {
 
                     Image songImg = new Image(getClass().getResourceAsStream("/Image/song.png"));
                     ImageView songImage = new ImageView(songImg);
-                    songImage.setFitHeight(60);
-                    songImage.setFitWidth(60);
+                    songImage.setFitHeight(70);
+                    songImage.setFitWidth(70);
                     message.setGraphic(songImage);
                     Optional<ButtonType> result = message.showAndWait();
 
                     if (result.isPresent() && result.get() == buttonTypeAdd) {
-                        //playlist.playlist().add(song);
                         Playlist.songs.addLast(song);
-                        //System.out.println(playlist.playlist().toString());
                     }
                 }
             }
@@ -148,7 +137,10 @@ public class ViewLibrary {
 
         getSongs();
 
-        librarySongTable.getColumns().addAll(titleColumn, artistColumn, timeColumn, videoColumn);
+        librarySongTable.getColumns().add(titleColumn);
+        librarySongTable.getColumns().add(artistColumn);
+        librarySongTable.getColumns().add(timeColumn);
+        librarySongTable.getColumns().add(videoColumn);
     }
 
     private void getSongs() {

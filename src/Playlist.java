@@ -9,9 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class Playlist {
@@ -30,11 +27,11 @@ public class Playlist {
         songTableView.setOnMouseClicked(e -> {
             if (e.getClickCount() > 1) {
                 if(songTableView.getSelectionModel().getSelectedItem() != null) {
-                    Song song =  songTableView.getSelectionModel().getSelectedItem();
+                    Song song = songTableView.getSelectionModel().getSelectedItem();
 
                     Alert message = new Alert(Alert.AlertType.INFORMATION);
                     message.initStyle(StageStyle.UTILITY);
-                    message.setTitle("Information");
+                    message.setTitle("Song");
                     message.setHeaderText(null);
                     message.setContentText(song.toString());
 
@@ -45,20 +42,16 @@ public class Playlist {
 
                     Image songImg = new Image(getClass().getResourceAsStream("/Image/song.png"));
                     ImageView songImage = new ImageView(songImg);
-                    songImage.setFitHeight(60);
-                    songImage.setFitWidth(60);
+                    songImage.setFitHeight(70);
+                    songImage.setFitWidth(70);
                     message.setGraphic(songImage);
                     Optional<ButtonType> result = message.showAndWait();
 
                     if (result.isPresent() && result.get() == buttonTypeRemove) {
-                        //songs.indexOf(song);
-
-                        System.out.println(songs.remove(song));
-
-                        /*System.out.println(songs.toString());
+                        songs.removeAt(songTableView.getSelectionModel().getSelectedIndex());
 
                         songTableView.getItems().clear();
-                        getSongs();*/
+                        getSongs();
                     }
                 }
             }
@@ -67,7 +60,7 @@ public class Playlist {
         BorderPane bp = new BorderPane();
         bp.setCenter(songTableView);
 
-        Scene scene = new Scene(bp, 820, 900);
+        Scene scene = new Scene(bp, 620, 700);
         scene.getStylesheets().add("/Stylesheet/ViewLibraryStylesheet.css");
         playlistWindow.setScene(scene);
         playlistWindow.show();
@@ -108,7 +101,10 @@ public class Playlist {
 
         getSongs();
 
-        songTableView.getColumns().addAll(titleColumn, artistColumn, timeColumn, videoColumn);
+        songTableView.getColumns().add(titleColumn);
+        songTableView.getColumns().add(artistColumn);
+        songTableView.getColumns().add(timeColumn);
+        songTableView.getColumns().add(videoColumn);
     }
 
     private void getSongs() {

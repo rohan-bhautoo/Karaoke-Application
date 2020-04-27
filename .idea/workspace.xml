@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/LinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/songLabelImg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/ConfirmBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/KaraokeApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/META-INF/KaraokeApp.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/MediaBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Scenebuilder/Application.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/Song.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaraokeApp/sample_song_data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryFileIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryFileIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConfirmBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConfirmBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +102,8 @@
       <workItem from="1587540140222" duration="20280000" />
       <workItem from="1587692930519" duration="9941000" />
       <workItem from="1587782789372" duration="22760000" />
-      <workItem from="1587868607560" duration="10794000" />
+      <workItem from="1587868607560" duration="28829000" />
+      <workItem from="1587959507315" duration="11105000" />
     </task>
     <servers />
   </component>

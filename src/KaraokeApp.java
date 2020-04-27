@@ -6,16 +6,13 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  *
  * Main class where application contains all functionality.
- * @author Rohan
+ *
  */
 public class KaraokeApp extends Application {
 
@@ -83,7 +80,7 @@ public class KaraokeApp extends Application {
         menuBar.getMenus().addAll(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
         // Adding file to media player
-        player = new Player("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/test.mp4");
+        player = new Player();
 
         // Setting up borderPane view
         player.setTop(menuBar);

@@ -14,7 +14,7 @@ import javafx.util.Duration;
  *
  * Class for bottom media bar containing media player functionality.
  * Class extends Vertical Box.
- * @author Rohan
+ *
  */
 public class MediaBar extends VBox {
 
@@ -48,8 +48,8 @@ public class MediaBar extends VBox {
         // Duration of video being played.
         endTime = new Label("--:--");
 
-        timeHBox.setHgrow(timeSlider, Priority.ALWAYS);
-        timeHBox.setMargin(timeSlider,new Insets(8,10,10,10));
+        HBox.setHgrow(timeSlider, Priority.ALWAYS);
+        HBox.setMargin(timeSlider,new Insets(8,10,10,10));
         timeHBox.getChildren().addAll(startTime, timeSlider, endTime);
 
         // Adding buttons to HBox
@@ -65,7 +65,7 @@ public class MediaBar extends VBox {
         playButton.setPrefWidth(60);
         playButton.setPrefHeight(50);
         playButton.setGraphic(playImage);
-        buttonHBox.setMargin(playButton,new Insets(10,30,10,10));
+        HBox.setMargin(playButton,new Insets(10,30,10,10));
         playButton.setOnAction(e -> play());
 
         // Slow rate button
@@ -73,7 +73,7 @@ public class MediaBar extends VBox {
         slowButton.setPrefWidth(65);
         slowButton.setPrefHeight(50);
         slowButton.setOnAction(e -> slow());
-        buttonHBox.setMargin(slowButton,new Insets(10,5,10,20));
+        HBox.setMargin(slowButton,new Insets(10,5,10,20));
 
         // Stop button
         Image stopImg = new Image(getClass().getResourceAsStream("/Image/stop.png"));
@@ -92,14 +92,14 @@ public class MediaBar extends VBox {
             pauseImage.setFitWidth(35);
             playButton.setGraphic(pauseImage);
         });
-        buttonHBox.setMargin(stopButton,new Insets(10,5,10,10));
+        HBox.setMargin(stopButton,new Insets(10,5,10,10));
 
         // Fast rate button
         fastButton = new Button("x2.0");
         fastButton.setPrefWidth(65);
         fastButton.setPrefHeight(50);
         fastButton.setOnAction(e -> fast());
-        buttonHBox.setMargin(fastButton,new Insets(10,30,10,10));
+        HBox.setMargin(fastButton,new Insets(10,30,10,10));
 
         // Previous song button
         Image previousImg = new Image(getClass().getResourceAsStream("/Image/previous.png"));
@@ -110,7 +110,7 @@ public class MediaBar extends VBox {
         previousButton.setPrefWidth(50);
         previousButton.setPrefHeight(50);
         previousButton.setGraphic(previousImage);
-        buttonHBox.setMargin(previousButton,new Insets(10,5,10,10));
+        HBox.setMargin(previousButton,new Insets(10,5,10,10));
 
         // Next song button
         Image nextImg = new Image(getClass().getResourceAsStream("/Image/next.png"));
@@ -121,7 +121,14 @@ public class MediaBar extends VBox {
         nextButton.setPrefWidth(50);
         nextButton.setPrefHeight(50);
         nextButton.setGraphic(nextImage);
-        buttonHBox.setMargin(nextButton,new Insets(10,5,10,10));
+        HBox.setMargin(nextButton,new Insets(10,5,10,10));
+        nextButton.setOnAction(e -> {
+            if (!Playlist.songs.isEmpty()) {
+                Playlist.songs.removeFirst();
+
+                setSongLabel();
+            }
+        });
 
         // Library Button
         Image libraryImg = new Image(getClass().getResourceAsStream("/Image/musicLibrary.png"));
@@ -132,7 +139,7 @@ public class MediaBar extends VBox {
         viewLibraryBtn.setStyle("-fx-font-size:20");
         viewLibraryBtn.setPrefWidth(150);
         viewLibraryBtn.setGraphic(libraryImage);
-        buttonHBox.setMargin(viewLibraryBtn,new Insets(10,5,10,10));
+        HBox.setMargin(viewLibraryBtn,new Insets(10,5,10,10));
         viewLibraryBtn.setOnAction(e -> {
             player.pause();
             viewLibrary.viewLibrary();
@@ -152,7 +159,7 @@ public class MediaBar extends VBox {
         playlistBtn.setStyle("-fx-font-size:20");
         playlistBtn.setPrefWidth(150);
         playlistBtn.setGraphic(playlistImage);
-        buttonHBox.setMargin(playlistBtn,new Insets(10,5,10,10));
+        HBox.setMargin(playlistBtn,new Insets(10,5,10,10));
         playlistBtn.setOnAction(e -> {
             player.pause();
             playlist.viewPlaylist();
@@ -203,10 +210,10 @@ public class MediaBar extends VBox {
         muteButton.setPrefHeight(50);
         muteButton.setGraphic(muteImage);
         muteButton.setOnAction(e -> mute());
-        buttonHBox.setMargin(muteButton,new Insets(10,5,10,10));
+        HBox.setMargin(muteButton,new Insets(10,5,10,10));
 
         // Adding buttons to grid pane.
-        buttonHBox.setHgrow(pane, Priority.ALWAYS);
+        HBox.setHgrow(pane, Priority.ALWAYS);
         pane.add(volumeLabel, 0, 1);
         pane.add(volumeSlider, 1,1);
         pane.add(volumePercentage,2,1);
@@ -420,7 +427,7 @@ public class MediaBar extends VBox {
         if(answer) {
             viewLibrary.viewLibraryWindow.close();
 
-            player.play();
+            setSongLabel();
         }
     }
 
@@ -429,7 +436,19 @@ public class MediaBar extends VBox {
         if(answer) {
             playlist.playlistWindow.close();
 
+            setSongLabel();
+        }
+    }
+
+    public void setSongLabel() {
+        if (Playlist.songs.iterator().hasNext()) {
+            Player.songLabel.setText("Title: " + Playlist.songs.peekFirst().getTitle() + "\nArtist: "
+                    + Playlist.songs.peekFirst().getArtist());
+            player.seek(Duration.millis(0));
             player.play();
+        } else {
+            Player.songLabel.setText("Empty Playlist");
+            player.stop();
         }
     }
 }

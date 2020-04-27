@@ -5,7 +5,7 @@ import java.util.Optional;
 
 /**
  * Class used when user click on close button of application.
- * @author Rohan
+ *
  */
 public class ConfirmBox extends KaraokeApp {
 
