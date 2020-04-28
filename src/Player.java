@@ -74,12 +74,12 @@ public class Player extends BorderPane {
     private void initMediaPlayer(MediaView mediaView) {
         Iterator<Song> songIterator = Playlist.songs.iterator();
         if (songIterator.hasNext()) {
-            File file=new File("../Video/" + songIterator.next().getVideoName());
+            File file=new File("Video/" + songIterator.next().getVideoName());
             mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
             mediaPlayer.setAutoPlay(true);
             mediaPlayer.setOnEndOfMedia(() -> initMediaPlayer(mediaView));
         } else {
-            File file=new File("../Video/test.mp4");
+            File file=new File("Video/test.mp4");
             mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
             mediaPlayer.setAutoPlay(false);
             mediaPlayer.stop();

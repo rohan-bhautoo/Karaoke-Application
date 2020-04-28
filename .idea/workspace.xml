@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Library" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/Library" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -99,7 +98,7 @@
       <workItem from="1587868607560" duration="28829000" />
       <workItem from="1587959507315" duration="34066000" />
       <workItem from="1588037792930" duration="19798000" />
-      <workItem from="1588082584296" duration="640000" />
+      <workItem from="1588082584296" duration="811000" />
     </task>
     <servers />
   </component>
