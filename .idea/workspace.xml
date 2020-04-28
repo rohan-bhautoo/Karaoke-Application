@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ConfirmBox.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ErrorBox.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KaraokeApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LibraryFileIndex.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LinkedList$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LinkedList$Node.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LinkedList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MediaBar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Playlist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SET.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ST.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Song.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Stopwatch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewLibrary.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConfirmBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConfirmBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ErrorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ErrorBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KaraokeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KaraokeApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LibraryFileIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryFileIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SET.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +98,8 @@
       <workItem from="1587782789372" duration="22760000" />
       <workItem from="1587868607560" duration="28829000" />
       <workItem from="1587959507315" duration="34066000" />
-      <workItem from="1588037792930" duration="19344000" />
+      <workItem from="1588037792930" duration="19798000" />
+      <workItem from="1588082584296" duration="640000" />
     </task>
     <servers />
   </component>

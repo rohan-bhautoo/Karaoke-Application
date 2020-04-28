@@ -8,6 +8,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
+import java.io.File;
 import java.util.Iterator;
 
 /**
@@ -67,17 +68,19 @@ public class Player extends BorderPane {
      * to iterate through the Playlist and changes the mediaPlayer according to the
      * videoName of the song. If playlist is empty, mediaPlayer will be set to test.mp4
      * by default.
+     *
      * @param mediaView the mediaView to be displayed.
      */
     private void initMediaPlayer(MediaView mediaView) {
         Iterator<Song> songIterator = Playlist.songs.iterator();
         if (songIterator.hasNext()) {
-            mediaPlayer = new MediaPlayer(new Media("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/"
-                    + songIterator.next().getVideoName()));
+            File file=new File("../Video/" + songIterator.next().getVideoName());
+            mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
             mediaPlayer.setAutoPlay(true);
             mediaPlayer.setOnEndOfMedia(() -> initMediaPlayer(mediaView));
         } else {
-            mediaPlayer = new MediaPlayer(new Media("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/test.mp4"));
+            File file=new File("../Video/test.mp4");
+            mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
             mediaPlayer.setAutoPlay(false);
             mediaPlayer.stop();
         }
