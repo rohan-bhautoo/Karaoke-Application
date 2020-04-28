@@ -4,35 +4,40 @@ import javafx.stage.Modality;
 import java.util.Optional;
 
 /**
- * Class used when user click on close button of application.
- *
+ * The {@code ConfirmBox} class provides to the user a confirmation
+ * message before doing certain actions.
  */
 public class ConfirmBox extends KaraokeApp {
 
     static boolean answer;
 
     /**
-     * Method to display message in box.
-     * @param title
-     * @param message
-     * @param information
-     * @return
+     * The {@code confirmation} method is used to display message in box.
+     * @param title The title
+     * @param message The confirmation message
+     * @param information Information that need to be displayed
+     * @return {@code false} if user click on cancel button and {@code true} if
+     * ok button is clicked
      */
     public static boolean confirmation(String title, String message, String information) {
+        // Instantiate Alert with confirmation type
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
         // Alert must be closed to perform other actions in the program
         alert.initModality(Modality.APPLICATION_MODAL);
+
+        // Adding information to alert
         alert.setTitle(title);
         alert.setHeaderText(message);
         alert.setContentText(information);
 
         Optional<ButtonType> option = alert.showAndWait();
 
-        if(option.get() == ButtonType.OK) {
+        // Perform certain action when user clicks on button
+        if(option.isPresent() && option.get() == ButtonType.OK) {
             answer = true;
             alert.close();
-        } else if (option.get() == ButtonType.CANCEL) {
+        } else if (option.isPresent() && option.get() == ButtonType.CANCEL) {
             answer = false;
             alert.close();
         }

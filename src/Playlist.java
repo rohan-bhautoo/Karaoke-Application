@@ -11,30 +11,44 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.Optional;
 
+/**
+ * The {@code Playlist} class contains the stage method to display the
+ * songs playlist. The songs are added to playlist from the {@code ViewLibrary}
+ * class and stored in the LinkedList {@code LinkedList} songs. Users can remove
+ * a song from the playlist by double-clicking on the selected songs.
+ */
 public class Playlist {
 
     Stage playlistWindow;
-    public static LinkedList<Song> songs = new LinkedList<>();
+    static LinkedList<Song> songs = new LinkedList<>();
     TableView<Song> songTableView;
 
+    /**
+     * The {@code viewPlaylist} method is used to show the playlistWindow stage.
+     */
     public void viewPlaylist() {
+        // Instantiate new stage
         playlistWindow = new Stage();
         playlistWindow.setTitle("Playlist");
         playlistWindow.initModality(Modality.APPLICATION_MODAL);
 
+        // Calling the playlistTable method before adding tableView to scene.
         playlistTable();
 
+        // Double-clicking on the tableView will display information of the selected song.
         songTableView.setOnMouseClicked(e -> {
             if (e.getClickCount() > 1) {
                 if(songTableView.getSelectionModel().getSelectedItem() != null) {
                     Song song = songTableView.getSelectionModel().getSelectedItem();
 
+                    // Display information in an alert method.
                     Alert message = new Alert(Alert.AlertType.INFORMATION);
                     message.initStyle(StageStyle.UTILITY);
                     message.setTitle("Song");
                     message.setHeaderText(null);
                     message.setContentText(song.toString());
 
+                    // Creating button remove and cancel
                     ButtonType buttonTypeRemove = new ButtonType("Remove");
                     ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
@@ -47,9 +61,12 @@ public class Playlist {
                     message.setGraphic(songImage);
                     Optional<ButtonType> result = message.showAndWait();
 
+                    // If user clicks on remove button, the selected song is removed from the playlist.
                     if (result.isPresent() && result.get() == buttonTypeRemove) {
+                        // The index of the selected song is obtained using the songTableView.
                         songs.removeAt(songTableView.getSelectionModel().getSelectedIndex());
 
+                        // Clears and reloads tableView.
                         songTableView.getItems().clear();
                         getSongs();
                     }
@@ -57,6 +74,7 @@ public class Playlist {
             }
         });
 
+        // Instantiate new borderPane
         BorderPane bp = new BorderPane();
         bp.setCenter(songTableView);
 
@@ -66,20 +84,33 @@ public class Playlist {
         playlistWindow.show();
     }
 
+    /**
+     * Method to create linkedList from {@code LinkedList} class.
+     * @return LinkedList<Song> songs
+     */
     public LinkedList<Song> playlist() {
         return songs;
     }
 
+    /**
+     * The {@code playlistTable} creates a new TableView which contains columns
+     * for the title, artist, time and video file name.
+     * Values of the cell are obtained in the {@code getSongs}
+     */
     public void playlistTable() {
+        // Title column
         TableColumn<Song, String> titleColumn = new TableColumn<>("Title");
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
+        // Artist column
         TableColumn<Song, String> artistColumn = new TableColumn<>("Artist");
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
 
+        // Time column
         TableColumn<Song, Double> timeColumn = new TableColumn<>("Time");
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 
+        // Video file name column
         TableColumn<Song, String> videoColumn = new TableColumn<>("Video");
         videoColumn.setCellValueFactory(new PropertyValueFactory<>("videoName"));
 
@@ -107,9 +138,14 @@ public class Playlist {
         songTableView.getColumns().add(videoColumn);
     }
 
+    /**
+     * The {@code getSongs} retrieves the song added to the {@code playlist} method
+     * and stores it in an ObservableList of type Song.
+     */
     private void getSongs() {
         ObservableList<Song> songsList = FXCollections.observableArrayList();
 
+        // Loop to get every song from playlist()
         for (Song s : playlist()) {
             Song song = new Song();
 
@@ -121,6 +157,7 @@ public class Playlist {
             songsList.add(song);
         }
 
+        // Add items of tableView
         songTableView.setItems(songsList);
     }
 

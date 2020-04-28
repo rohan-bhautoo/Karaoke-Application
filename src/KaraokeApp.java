@@ -10,36 +10,47 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * The {@code KaraokeApp} class contains the main application contents. It
+ * takes a file-path from command-line arguments. It takes the input file and
+ * add it to the {@code LibraryFileIndex} class.
  *
- * Main class where application contains all functionality.
- *
+ * Compilation: javac KaraokeApp.java
+ * Execution:   java KaraokeApp --filePath=Library/sample_song_data.txt
+ * The filePath specified can be any valid path to a music library text file.
  */
 public class KaraokeApp extends Application {
 
     Stage window;
     Player player;
     MenuBar menuBar;
-    public static String FilePath;
+    static String FilePath;
 
     /**
      * Main method to launch application.
-     * @param args
+     * @param args command-line argument
      */
     public static void main(String[] args) {
         launch(args);
     }
 
     /**
-     * Method to start when application is launched.
-     * @param primaryStage
+     * The {@code start} method contains the main entry for the JavaFX
+     * application where the Stage is the top-level container.
+     * @param primaryStage The main stage of application
      */
     @Override
     public void start(Stage primaryStage) {
 
+        // Getting the command-line arguments in Parameter p.
         Parameters p = this.getParameters();
+
+        // Retrieve read-only map of named parameters.
         Map<String, String> namedParams = p.getNamed();
+
+        // Retrieve read-only raw arguments.
         List<String> rawArguments = p.getRaw();
 
+        // Validation to check if user specified only one argument.
         if (rawArguments.size() != 1) {
             System.out.println("Invalid Command!\n" +
                     "Usage: java KaraokeApp --filePath=");
@@ -50,6 +61,7 @@ public class KaraokeApp extends Application {
             System.exit(1);
         }
 
+        // Setting FilePath to the value of the named parameter.
         for (Map.Entry<String,String> entry : namedParams.entrySet()) {
             FilePath = entry.getValue();
         }
@@ -57,34 +69,37 @@ public class KaraokeApp extends Application {
         window = primaryStage;
         window.setTitle("Karaoke Media Player");
 
-        /* Consumes the setOnCloseRequest and goes to closeProgram method.
-        Closing the program with x will work properly. */
+        // Consumes the setOnCloseRequest and goes to closeWindow method.
+        // Closing the program with x will work properly.
         window.setOnCloseRequest(e -> {
             e.consume();
             closeWindow();
         });
 
-        //Menu
-        //'_' is a shortcut for keyboard. ALT + F will open File Menu.
+        // Menu
+        // '_' is a shortcut for keyboard. ALT + F will open File Menu.
         Menu mediaMenu = new Menu("_Media");
         Menu playbackMenu = new Menu("_Playback");
         Menu audioMenu = new Menu("_Audio");
         Menu viewMenu = new Menu("_View");
         Menu helpMenu = new Menu("_Help");
 
-        //Menu items
+        // Menu items
         MenuItems(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
-        //Menu Bar
+        // Menu Bar
+        // Adding menu to menuBar.
         menuBar = new MenuBar();
         menuBar.getMenus().addAll(mediaMenu, playbackMenu, audioMenu, viewMenu, helpMenu);
 
-        // Adding file to media player
+        // Instantiate media player
         player = new Player();
 
         // Setting up borderPane view
         player.setTop(menuBar);
         Scene scene = new Scene(player);
+
+        // Applying stylesheet to scene.
         scene.getStylesheets().add("/Stylesheet/Stylesheet.css");
         window.setMaximized(true);
         window.setScene(scene);
@@ -92,12 +107,13 @@ public class KaraokeApp extends Application {
     }
 
     /**
-     * Add items to menu in top of application.
-     * @param mediaMenu
-     * @param playbackMenu
-     * @param audioMenu
-     * @param viewMenu
-     * @param helpMenu
+     * The {@code MenuItems} method adds menu-items to Menus. It is displayed
+     * on the top section of the borderPane.
+     * @param mediaMenu mediaMenu containing Open File, Open Directory and Quit function
+     * @param playbackMenu playbackMenu containing MediaPlayer functions
+     * @param audioMenu audioMenu containing volume functions
+     * @param viewMenu viewMenu containing playlist and fullscreen
+     * @param helpMenu helpMenu containing a help section for the user
      */
     private void MenuItems(Menu mediaMenu, Menu playbackMenu, Menu audioMenu, Menu viewMenu, Menu helpMenu) {
         // Media Menu items
@@ -136,7 +152,10 @@ public class KaraokeApp extends Application {
     }
 
     /**
-     * Execute function from ConfirmBox class to display message.
+     * Execute function from {@code ConfirmBox} class to display
+     * confirmation message.
+     * The {@code closeWindow} method uses Platform.exit() to exit
+     * application even if other sub-stages are opened.
      */
     private void closeWindow() {
         Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);

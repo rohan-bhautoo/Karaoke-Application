@@ -2,6 +2,18 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
+/**
+ * The {@code SET} class represents an ordered set of comparable keys.
+ * It supports the add, contains and delete methods. It also provides
+ * ordered methods for finding the minimum, maximum, floor and ceiling
+ * and set methods for union, intersection and equality.
+ * This implementation uses a balanced binary search tree.
+ * The add, contains, delete, minimum, maximum, ceiling and floor methods
+ * take O(log n) in worst case.
+ * The size and is-empty operations take O(1).
+ *
+ * @param <Key> the generic type of a key in the set
+ */
 public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 
     private final TreeSet<Key> set;

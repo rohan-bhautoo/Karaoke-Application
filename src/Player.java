@@ -1,8 +1,5 @@
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -10,45 +7,28 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.util.Duration;
 
 import java.util.Iterator;
 
 /**
- * Class to display media player.
- * Extends borderPane to divide media.
- *
+ * The {@code Player} class creates the mediaPlayer which is then
+ * added to a mediaView. This class also extends BorderPane to add
+ * the mediaView and {@code MediaBar} together in the layout. A song
+ * label is shown on the top left corner to the mediaView.
  */
 public class Player extends BorderPane {
 
-    Media media;
     MediaPlayer mediaPlayer;
     MediaView mediaView;
     Pane pane;
     MediaBar bar;
-    String file;
     static Label songLabel;
 
     /**
-     * Default constructor
-     *
+     * Default constructor of {@code Player} class.
      */
     public Player() {
-
-        if (!Playlist.songs.isEmpty()) {
-            file = "file:///home/Rohan/IdeaProjects/KaraokeApp/Video/" + Playlist.songs.peekFirst().getVideoName();
-        } else {
-            file = "file:///home/Rohan/IdeaProjects/KaraokeApp/Video/test.mp4";
-        }
-
-        // Setting up media
-        media = new Media(file);
-        mediaPlayer = new MediaPlayer(media);
-        mediaView = new MediaView(mediaPlayer);
-
-        // Making the video play
-        mediaPlayer.setAutoPlay(false);
-
+        // Song Label
         Image songLabelImg = new Image(getClass().getResourceAsStream("/Image/songLabelImg.png"));
         ImageView songLabelImage = new ImageView(songLabelImg);
         songLabelImage.setFitHeight(50);
@@ -58,8 +38,9 @@ public class Player extends BorderPane {
         songLabel.setStyle("-fx-font-size:16");
         songLabel.setGraphic(songLabelImage);
 
-        // Add media to pane
+        // Add media and label to pane
         pane = new Pane();
+        createMediaView();
         mediaView.setPreserveRatio(false);
         mediaView.fitWidthProperty().bind(pane.widthProperty());
         mediaView.fitHeightProperty().bind(pane.heightProperty());
@@ -70,6 +51,37 @@ public class Player extends BorderPane {
         bar = new MediaBar(mediaPlayer);
         setBottom(bar);
         setStyle("-fx-background-color:#2a2727");
+    }
+
+    /**
+     * The {@code createMediaView} method instantiate new MediaView used
+     * together with the {@code initMediaPlayer}
+     */
+    public void createMediaView() {
+        mediaView = new MediaView();
+        initMediaPlayer(mediaView);
+    }
+
+    /**
+     * The {@code initMediaPlayer} uses iterator method in {@code LinkedList} class
+     * to iterate through the Playlist and changes the mediaPlayer according to the
+     * videoName of the song. If playlist is empty, mediaPlayer will be set to test.mp4
+     * by default.
+     * @param mediaView the mediaView to be displayed.
+     */
+    private void initMediaPlayer(MediaView mediaView) {
+        Iterator<Song> songIterator = Playlist.songs.iterator();
+        if (songIterator.hasNext()) {
+            mediaPlayer = new MediaPlayer(new Media("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/"
+                    + songIterator.next().getVideoName()));
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.setOnEndOfMedia(() -> initMediaPlayer(mediaView));
+        } else {
+            mediaPlayer = new MediaPlayer(new Media("file:///home/Rohan/IdeaProjects/KaraokeApp/Video/test.mp4"));
+            mediaPlayer.setAutoPlay(false);
+            mediaPlayer.stop();
+        }
+        mediaView.setMediaPlayer(mediaPlayer);
     }
 
 }

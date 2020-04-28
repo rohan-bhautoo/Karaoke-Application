@@ -2,9 +2,23 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
+/**
+ * The {@code ST} class represents an ordered symbol table of generic
+ * key-value pairs.
+ * It contains the put, get, contains, delete, size and is-empty methods.
+ * It also contains ordered methods for finding the minimum, maximum, floor
+ * and ceiling.
+ * This implementation uses a red-black BST.
+ * The put, get, contains, remove, minimum, maximum, ceiling and floor operations
+ * each take O(log n) time in worst case.
+ * The size and is-empty operations take O(1) time.
+ *
+ * @param <Key> the generic type of keys in the symbol table
+ * @param <Value> the generic type of values in the symbol table
+ */
 public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
-    private TreeMap<Key, Value> st;
+    private final TreeMap<Key, Value> st;
 
     /**
      * Initializes an empty symbol table.

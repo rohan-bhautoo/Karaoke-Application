@@ -11,10 +11,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
- *
- * Class for bottom media bar containing media player functionality.
- * Class extends Vertical Box.
- *
+ * The {@code MediaBar} class contains all the mediaPlayer main functionalities
+ * such as play, pause, skip, viewLibrary, viewPlaylist. It extend the VBox method
+ * to add the buttons and sliders.
  */
 public class MediaBar extends VBox {
 
@@ -29,11 +28,14 @@ public class MediaBar extends VBox {
     Duration duration;
 
     /**
-     * Default constructor
-     * @param play
+     * Default constructor for the {@code MediaBar} class.
+     * @param play the mediaPlayer where the functionalities in
+     *             {@code MediaBar} should be applied.
      */
     public MediaBar(MediaPlayer play) {
         player = play;
+
+        // Instantiate the classes
         viewLibrary = new ViewLibrary();
         playlist = new Playlist();
 
@@ -42,21 +44,22 @@ public class MediaBar extends VBox {
         timeHBox.setPadding(new Insets(10,10,10,10));
         startTime = new Label("--:--");
 
-        // Time slider
+        // Instantiate Time slider
         timeSlider = new Slider();
 
         // Duration of video being played.
         endTime = new Label("--:--");
 
+        // Adding sliders to timeHBox
         HBox.setHgrow(timeSlider, Priority.ALWAYS);
         HBox.setMargin(timeSlider,new Insets(8,10,10,10));
         timeHBox.getChildren().addAll(startTime, timeSlider, endTime);
 
-        // Adding buttons to HBox
         buttonHBox = new HBox();
         buttonHBox.setPadding(new Insets(10,10,10,10));
 
         // Play button
+        // It has the functionality to play the media player
         Image playImg = new Image(getClass().getResourceAsStream("/Image/pause.png"));
         ImageView playImage = new ImageView(playImg);
         playImage.setFitHeight(35);
@@ -69,6 +72,7 @@ public class MediaBar extends VBox {
         playButton.setOnAction(e -> play());
 
         // Slow rate button
+        // Sets the video play rate to 0.5
         slowButton = new Button("x0.5");
         slowButton.setPrefWidth(65);
         slowButton.setPrefHeight(50);
@@ -76,6 +80,7 @@ public class MediaBar extends VBox {
         HBox.setMargin(slowButton,new Insets(10,5,10,20));
 
         // Stop button
+        // It stops the video from playing
         Image stopImg = new Image(getClass().getResourceAsStream("/Image/stop.png"));
         ImageView stopImage = new ImageView(stopImg);
         stopImage.setFitHeight(35);
@@ -86,6 +91,8 @@ public class MediaBar extends VBox {
         stopButton.setGraphic(stopImage);
         stopButton.setOnAction(e -> {
             stop();
+
+            // Changes the image back to play.png when stop is clicked
             Image pauseImg = new Image(getClass().getResourceAsStream("/Image/play.png"));
             ImageView pauseImage = new ImageView(pauseImg);
             pauseImage.setFitHeight(35);
@@ -95,6 +102,7 @@ public class MediaBar extends VBox {
         HBox.setMargin(stopButton,new Insets(10,5,10,10));
 
         // Fast rate button
+        // Sets the video play rate to 2.0
         fastButton = new Button("x2.0");
         fastButton.setPrefWidth(65);
         fastButton.setPrefHeight(50);
@@ -113,6 +121,7 @@ public class MediaBar extends VBox {
         HBox.setMargin(previousButton,new Insets(10,5,10,10));
 
         // Next song button
+        // It has the function to skip songs in the playlist
         Image nextImg = new Image(getClass().getResourceAsStream("/Image/next.png"));
         ImageView nextImage = new ImageView(nextImg);
         nextImage.setFitHeight(35);
@@ -123,6 +132,8 @@ public class MediaBar extends VBox {
         nextButton.setGraphic(nextImage);
         HBox.setMargin(nextButton,new Insets(10,5,10,10));
         nextButton.setOnAction(e -> {
+            // Checks if playlist is not empty
+            // Removes the first song when nextButton is clicked
             if (!Playlist.songs.isEmpty()) {
                 Playlist.songs.removeFirst();
 
@@ -131,6 +142,7 @@ public class MediaBar extends VBox {
         });
 
         // Library Button
+        // Button to open ViewLibrary class
         Image libraryImg = new Image(getClass().getResourceAsStream("/Image/musicLibrary.png"));
         ImageView libraryImage = new ImageView(libraryImg);
         libraryImage.setFitHeight(35);
@@ -141,6 +153,7 @@ public class MediaBar extends VBox {
         viewLibraryBtn.setGraphic(libraryImage);
         HBox.setMargin(viewLibraryBtn,new Insets(10,5,10,10));
         viewLibraryBtn.setOnAction(e -> {
+            // Pause media player when playlist is opened
             player.pause();
             viewLibrary.viewLibrary();
 
@@ -151,6 +164,7 @@ public class MediaBar extends VBox {
         });
 
         // Playlist button
+        // Button to open Playlist class
         Image playlistImg = new Image(getClass().getResourceAsStream("/Image/musicPlaylist.png"));
         ImageView playlistImage = new ImageView(playlistImg);
         playlistImage.setFitHeight(35);
@@ -161,6 +175,7 @@ public class MediaBar extends VBox {
         playlistBtn.setGraphic(playlistImage);
         HBox.setMargin(playlistBtn,new Insets(10,5,10,10));
         playlistBtn.setOnAction(e -> {
+            // Pause media player when playlist is opened
             player.pause();
             playlist.viewPlaylist();
 
@@ -170,7 +185,8 @@ public class MediaBar extends VBox {
             });
         });
 
-        // GridPane for volume controls
+        // Instantiate a gripPane method
+        // It is used for the volume controls
         pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
         pane.setHgap(10);
@@ -232,6 +248,7 @@ public class MediaBar extends VBox {
             updateValues();
         });
 
+        // Update time when video is playing
         player.currentTimeProperty().addListener(e -> updateValues());
 
         // Add functionality to time slider
@@ -241,8 +258,6 @@ public class MediaBar extends VBox {
                 player.seek(duration.multiply(timeSlider.getValue() / 100.0));
             }
         });
-
-        player.currentTimeProperty().addListener(e -> updateValues());
 
         // Add functionality to volume slider
         volumeSlider.valueProperty().addListener(e -> {
@@ -254,6 +269,12 @@ public class MediaBar extends VBox {
         });
     }
 
+    /**
+     * The {@code play} provides the functionality for the mediaPlayer
+     * to start playing. MediaPlayer.status is used to check if mediaPlayer
+     * is already playing, on paused or stopped.
+     * It changes the image of the play button when the video is paused or stopped.
+     */
     public void play() {
         // Get status of player
         MediaPlayer.Status status = player.getStatus();
@@ -296,7 +317,9 @@ public class MediaBar extends VBox {
         }
     }
 
-    // Stop media player
+    /**
+     * The {@code stop} stops the mediaPlayer from playing and set time back to 0.00.
+     */
     public void stop() {
         player.stop();
 
@@ -315,7 +338,9 @@ public class MediaBar extends VBox {
         }
     }
 
-    // Set play rate to 2.0
+    /**
+     * Sets the video rate to 2.0.
+     */
     public void fast() {
         player.play();
         Image pauseImg = new Image(getClass().getResourceAsStream("/Image/pause.png"));
@@ -326,7 +351,9 @@ public class MediaBar extends VBox {
         player.setRate(2.0);
     }
 
-    // Set play rate to 0.5
+    /**
+     * Sets the video rate to 0.5.
+     */
     public void slow() {
         player.play();
         Image pauseImg = new Image(getClass().getResourceAsStream("/Image/pause.png"));
@@ -337,7 +364,9 @@ public class MediaBar extends VBox {
         player.setRate(0.5);
     }
 
-    // Set player to mute
+    /**
+     * Sets the mediaPlayer to mute and changes the imageView.
+     */
     public void mute() {
         player.setMute(true);
 
@@ -351,7 +380,9 @@ public class MediaBar extends VBox {
     }
 
     /**
-     * Method to update slider's values.
+     * The {@code updateValues} method updates the time slider when the video
+     * is playing. The text of the endTime is also changed.
+     * If video is mute, the volume slider goes to 0 and mute icon is changed.
      */
     protected void updateValues() {
         if (endTime != null && timeSlider != null && volumeSlider != null) {
@@ -369,6 +400,7 @@ public class MediaBar extends VBox {
                             * 100.0);
                 }
 
+                // Checks if mediaPlayer is set to mute and changes text.
                 if (player.isMute()) {
                     volumeSlider.setValue(0);
                     volumePercentage.setText((int) Math.round(volumeSlider.getValue() * 100) + "%");
@@ -387,6 +419,13 @@ public class MediaBar extends VBox {
         }
     }
 
+    /**
+     * The {@code formatElapsedTime} method is used to calculate the time when
+     * the video is being played. The value gets changed every time until it
+     * reaches end of media.
+     * @param elapsed Time duration of video being played.
+     * @return the string of time which can be in format mm:ss or hh:mm:ss.
+     */
     private static String formatElapsedTime(Duration elapsed) {
         int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
@@ -406,6 +445,12 @@ public class MediaBar extends VBox {
         }
     }
 
+    /**
+     * The {@code formatDurationTime} method is used to calculate the total time
+     * of the video being played.
+     * @param duration Time duration of video being played.
+     * @return the string of time which can be in format mm:ss or hh:mm:ss.
+     */
     private static String formatDurationTime(Duration duration) {
         int intDuration = (int) Math.floor(duration.toSeconds());
         int durationHours = intDuration / (60 * 60);
@@ -422,6 +467,11 @@ public class MediaBar extends VBox {
         }
     }
 
+    /**
+     * Execute function from {@code ConfirmBox} class to display
+     * confirmation message.
+     * It changes the songLabel when the window is closed.
+     */
     public void closeViewLibrary() {
         Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
         if(answer) {
@@ -431,6 +481,11 @@ public class MediaBar extends VBox {
         }
     }
 
+    /**
+     * Execute function from {@code ConfirmBox} class to display
+     * confirmation message.
+     * It changes the songLabel when the window is closed.
+     */
     public void closePlaylist() {
         Boolean answer = ConfirmBox.confirmation("Exit", "Are you sure you want to exit?", null);
         if(answer) {
@@ -440,7 +495,12 @@ public class MediaBar extends VBox {
         }
     }
 
+    /**
+     * The {@code setSongLabel} iterates through the LinkedList songs at changes
+     * the song label in {@code Player} class.
+     */
     public void setSongLabel() {
+        // Checks if Playlist is not empty.
         if (Playlist.songs.iterator().hasNext()) {
             Player.songLabel.setText("Title: " + Playlist.songs.peekFirst().getTitle() + "\nArtist: "
                     + Playlist.songs.peekFirst().getArtist());
