@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Video/Default.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,13 +46,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="/opt/SceneBuilder/SceneBuilder" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Video" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Video" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Library" />
@@ -98,7 +104,11 @@
       <workItem from="1587868607560" duration="28829000" />
       <workItem from="1587959507315" duration="34066000" />
       <workItem from="1588037792930" duration="19798000" />
-      <workItem from="1588082584296" duration="811000" />
+      <workItem from="1588082584296" duration="1013000" />
+      <workItem from="1588090375092" duration="5586000" />
+      <workItem from="1588097611743" duration="7809000" />
+      <workItem from="1588161810813" duration="10309000" />
+      <workItem from="1588219008188" duration="17783000" />
     </task>
     <servers />
   </component>
@@ -113,6 +123,10 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="627" y="258" width="655" height="605" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584011161277" />
+    <state x="560" y="335" width="790" height="450" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588230130092">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="560" y="335" width="790" height="450" key="#com.intellij.fileTypes.FileTypeChooser/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588230130092" />
     <state x="475" y="172" width="960" height="777" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1586882915807">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>

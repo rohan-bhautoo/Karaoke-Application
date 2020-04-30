@@ -7,9 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-
 import java.io.File;
-import java.util.Iterator;
 
 /**
  * The {@code Player} class creates the mediaPlayer which is then
@@ -20,7 +18,7 @@ import java.util.Iterator;
 public class Player extends BorderPane {
 
     MediaPlayer mediaPlayer;
-    MediaView mediaView;
+    final MediaView mediaView = new MediaView();
     Pane pane;
     MediaBar bar;
     static Label songLabel;
@@ -41,7 +39,9 @@ public class Player extends BorderPane {
 
         // Add media and label to pane
         pane = new Pane();
-        createMediaView();
+
+        playMedia("Video/Default.mp4");
+
         mediaView.setPreserveRatio(false);
         mediaView.fitWidthProperty().bind(pane.widthProperty());
         mediaView.fitHeightProperty().bind(pane.heightProperty());
@@ -49,42 +49,41 @@ public class Player extends BorderPane {
 
         // Dividing the media display
         setCenter(pane);
-        bar = new MediaBar(mediaPlayer);
-        setBottom(bar);
         setStyle("-fx-background-color:#2a2727");
     }
 
     /**
-     * The {@code createMediaView} method instantiate new MediaView used
-     * together with the {@code initMediaPlayer}
+     * The {@code playMedia} method creates the media player
+     * and changes the video in the GUI by getting the video
+     * file name of the first song in {@code Playlist}.
+     * If {@code Playlist} is empty, the song label will be
+     * set to empty playlist and media player will stop.
+     * @param mediaFile the path of the video file
      */
-    public void createMediaView() {
-        mediaView = new MediaView();
-        initMediaPlayer(mediaView);
-    }
+    public void playMedia(String mediaFile) {
+        try {
+            mediaPlayer = new MediaPlayer(new Media(new File(mediaFile).toURI().toString()));
+            mediaView.setMediaPlayer(mediaPlayer);
 
-    /**
-     * The {@code initMediaPlayer} uses iterator method in {@code LinkedList} class
-     * to iterate through the Playlist and changes the mediaPlayer according to the
-     * videoName of the song. If playlist is empty, mediaPlayer will be set to test.mp4
-     * by default.
-     *
-     * @param mediaView the mediaView to be displayed.
-     */
-    private void initMediaPlayer(MediaView mediaView) {
-        Iterator<Song> songIterator = Playlist.songs.iterator();
-        if (songIterator.hasNext()) {
-            File file=new File("Video/" + songIterator.next().getVideoName());
-            mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
-            mediaPlayer.setAutoPlay(true);
-            mediaPlayer.setOnEndOfMedia(() -> initMediaPlayer(mediaView));
-        } else {
-            File file=new File("Video/test.mp4");
-            mediaPlayer = new MediaPlayer(new Media(file.toURI().toString()));
-            mediaPlayer.setAutoPlay(false);
-            mediaPlayer.stop();
+            mediaPlayer.play();
+            mediaPlayer.setOnEndOfMedia(() -> {
+                mediaPlayer.stop();
+
+                if (!Playlist.songs.isEmpty()) {
+                    playMedia("Video/" + Playlist.songs.peekFirst().getVideoName());
+                    Player.songLabel.setText("Title: " + Playlist.songs.peekFirst().getTitle() + "\nArtist: "
+                            + Playlist.songs.peekFirst().getArtist());
+                    Playlist.songs.removeFirst();
+                } else {
+                    Player.songLabel.setText("Empty Playlist");
+                    mediaPlayer.stop();
+                }
+            });
+            bar = new MediaBar(mediaPlayer);
+            setBottom(bar);
+        } catch (Exception e) {
+            ErrorBox.error(e);
         }
-        mediaView.setMediaPlayer(mediaPlayer);
     }
 
 }

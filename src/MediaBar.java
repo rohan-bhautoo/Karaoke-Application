@@ -501,11 +501,11 @@ public class MediaBar extends VBox {
      */
     public void setSongLabel() {
         // Checks if Playlist is not empty.
-        if (Playlist.songs.iterator().hasNext()) {
+        if (!Playlist.songs.isEmpty()) {
             Player.songLabel.setText("Title: " + Playlist.songs.peekFirst().getTitle() + "\nArtist: "
                     + Playlist.songs.peekFirst().getArtist());
             player.seek(Duration.millis(0));
-            player.play();
+            player.setAutoPlay(true);
         } else {
             Player.songLabel.setText("Empty Playlist");
             player.stop();
