@@ -1,3 +1,4 @@
+import DataStructure.LinkedList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import java.util.Optional;
 /**
  * The {@code Playlist} class contains the stage method to display the
  * songs playlist. The songs are added to playlist from the {@code ViewLibrary}
- * class and stored in the LinkedList {@code LinkedList} songs. Users can remove
+ * class and stored in the DataStructure.LinkedList {@code DataStructure.LinkedList} songs. Users can remove
  * a song from the playlist by double-clicking on the selected songs.
  */
 public class Playlist {
@@ -85,8 +86,8 @@ public class Playlist {
     }
 
     /**
-     * Method to create linkedList from {@code LinkedList} class.
-     * @return LinkedList<Song> songs
+     * Method to create linkedList from {@code DataStructure.LinkedList} class.
+     * @return DataStructure.LinkedList<Song> songs
      */
     public LinkedList<Song> playlist() {
         return songs;

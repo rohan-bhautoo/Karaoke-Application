@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a171e3d6-3023-4681-af54-1efc998b2a5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Video/Default.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructure/LinkedList$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructure/LinkedList$Node.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructure/LinkedList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructure/SET.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructure/ST.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test/LinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KaraokeApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/KaraokeApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LibraryFileIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryFileIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataStructure/LinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MediaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MediaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataStructure/SET.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataStructure/ST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/Stopwatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +60,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Video" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-core-1.3.jar!/" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -60,6 +74,45 @@
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Library" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.LinkedListTest">
+    <configuration name="LinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KaraokeApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.LinkedListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTest.testEmptyList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KaraokeApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.LinkedListTest" />
+      <option name="METHOD_NAME" value="testEmptyList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LinkedListTest" />
+        <item itemvalue="JUnit.LinkedListTest.testEmptyList" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -108,7 +161,16 @@
       <workItem from="1588090375092" duration="5586000" />
       <workItem from="1588097611743" duration="7809000" />
       <workItem from="1588161810813" duration="10309000" />
-      <workItem from="1588219008188" duration="17783000" />
+      <workItem from="1588219008188" duration="18164000" />
+      <workItem from="1588388736335" duration="234000" />
+      <workItem from="1588389063842" duration="75000" />
+      <workItem from="1588441836806" duration="1073000" />
+      <workItem from="1588505403445" duration="1467000" />
+      <workItem from="1588530479534" duration="677000" />
+      <workItem from="1588616997158" duration="827000" />
+      <workItem from="1588644355038" duration="7438000" />
+      <workItem from="1588657866208" duration="13145000" />
+      <workItem from="1588758888427" duration="427000" />
     </task>
     <servers />
   </component>
@@ -138,10 +200,14 @@
     <state x="3102" y="118" width="439" height="752" key="#com.intellij.ide.util.MemberChooser/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1587060126651" />
     <state x="721" y="200" width="468" height="721" key="#com.intellij.ide.util.MemberChooser/0.34.3840.1046@0.34.3840.1046" timestamp="1586987556700" />
     <state x="361" y="200" width="701" height="721" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585246374196" />
-    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587206139233">
+    <state x="785" y="233" width="330" height="655" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1588662959400">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587206139233" />
+    <state x="785" y="233" width="330" height="655" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588662959400" />
+    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588388888696">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="640" y="280" width="630" height="561" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588388888696" />
     <state x="689" y="34" width="1074" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586986642248">
       <screen x="0" y="34" width="3840" height="1046" />
     </state>
@@ -150,18 +216,20 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="627" y="245" width="655" height="630" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587800621732" />
-    <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl" timestamp="1587207974840">
+    <state x="685" y="258" width="945" height="644" key="FileChooserDialogImpl" timestamp="1588662956447">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="685" y="258" key="FileChooserDialogImpl/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1587207974840" />
+    <state x="685" y="258" width="945" height="644" key="FileChooserDialogImpl/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588662956447" />
     <state x="685" y="258" width="940" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1586436465843" />
     <state x="2582" y="143" width="586" height="801" key="RollbackChangesDialog" timestamp="1587064464153">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2582" y="143" width="586" height="801" key="RollbackChangesDialog/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1587064464153" />
-    <state x="315" y="34" width="1280" height="1046" key="SettingsEditor" timestamp="1583668030655">
+    <state x="286" y="34" width="1280" height="1046" key="SettingsEditor" timestamp="1588693484720">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
+    <state x="315" y="34" width="1280" height="1046" key="SettingsEditor/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588663655343" />
+    <state x="286" y="34" width="1280" height="1046" key="SettingsEditor/0.34.1920.1046/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588693484720" />
     <state x="315" y="34" width="1280" height="1046" key="SettingsEditor/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1583668030655" />
     <state x="524" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1587206131073">
       <screen x="0" y="34" width="1920" height="1046" />
@@ -172,9 +240,10 @@
     <state x="2444" y="353" key="com.intellij.ide.util.TipDialog/0.34.3840.1046@0.34.3840.1046" timestamp="1584176717732" />
     <state x="524" y="353" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1585329323773" />
     <state x="2444" y="329" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.34.1920.1046@1920.0.1920.1080" timestamp="1584129685464" />
-    <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584033993030">
+    <state x="514" y="431" width="881" height="288" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588617168680">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
+    <state x="514" y="431" width="881" height="288" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.34.1920.1046/1920.0.1920.1080@0.34.1920.1046" timestamp="1588617168680" />
     <state x="514" y="431" width="881" height="259" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.0.1920.1080/0.34.1920.1046@0.34.1920.1046" timestamp="1584033993030" />
     <state x="627" y="244" width="716" height="632" key="extract.method.dialog" timestamp="1587416025382">
       <screen x="0" y="34" width="1920" height="1046" />

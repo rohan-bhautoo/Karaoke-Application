@@ -136,8 +136,12 @@ public class MediaBar extends VBox {
             // Removes the first song when nextButton is clicked
             if (!Playlist.songs.isEmpty()) {
                 Playlist.songs.removeFirst();
+                player.seek(Duration.millis(0));
 
                 setSongLabel();
+            } else {
+                Player.songLabel.setText("Empty Playlist");
+                player.stop();
             }
         });
 
@@ -496,7 +500,7 @@ public class MediaBar extends VBox {
     }
 
     /**
-     * The {@code setSongLabel} iterates through the LinkedList songs at changes
+     * The {@code setSongLabel} iterates through the DataStructure.LinkedList songs at changes
      * the song label in {@code Player} class.
      */
     public void setSongLabel() {
@@ -504,8 +508,7 @@ public class MediaBar extends VBox {
         if (!Playlist.songs.isEmpty()) {
             Player.songLabel.setText("Title: " + Playlist.songs.peekFirst().getTitle() + "\nArtist: "
                     + Playlist.songs.peekFirst().getArtist());
-            player.seek(Duration.millis(0));
-            player.setAutoPlay(true);
+            player.play();
         } else {
             Player.songLabel.setText("Empty Playlist");
             player.stop();

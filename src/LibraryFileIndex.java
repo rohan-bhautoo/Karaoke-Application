@@ -1,3 +1,5 @@
+import DataStructure.SET;
+import DataStructure.ST;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ import java.util.Scanner;
  * The {@code LibraryFileIndex} class provide user for indexing of the
  * library file specified in command-line arguments in {@code KaraokeApp} class.
  * It takes the file, where details of one song per line is separated by a \t,
- * and add it to an ordered symbol table {@code ST} of generic key-value pairs.
+ * and add it to an ordered symbol table {@code DataStructure.ST} of generic key-value pairs.
  */
 public class LibraryFileIndex {
     

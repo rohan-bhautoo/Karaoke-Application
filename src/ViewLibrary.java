@@ -1,3 +1,5 @@
+import DataStructure.SET;
+import DataStructure.ST;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -213,68 +215,55 @@ public class ViewLibrary {
      * the song's information. Otherwise, it will show 'Not Found'.
      */
     private void search() {
-        final int DELAY = 500;
+        // Setting query equal to text entered by user.
+        String query = searchTextField.getText();
 
-        Stopwatch timer = new Stopwatch();
+        Alert songInformation = new Alert(Alert.AlertType.INFORMATION);
+        songInformation.initStyle(StageStyle.UTILITY);
+        songInformation.setTitle("Information");
+        songInformation.setHeaderText(null);
 
-        timer.start();
+        ButtonType buttonTypeAdd = new ButtonType("Add");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        try {
-            // Setting query equal to text entered by user.
-            String query = searchTextField.getText();
+        songInformation.getButtonTypes().setAll(buttonTypeAdd, buttonTypeCancel);
 
-            Alert songInformation = new Alert(Alert.AlertType.INFORMATION);
-            songInformation.initStyle(StageStyle.UTILITY);
-            songInformation.setTitle("Information");
-            songInformation.setHeaderText(null);
+        // Checks if song is contained in the LibraryFileIndex class.
+        if (libraryFileIndex.symbolTableSong().contains(query)) {
+            // Get song's information using DataStructure.SET.
+            SET<Song> set = libraryFileIndex.symbolTableSong().get(query);
+            songInformation.setContentText(set.toString());
 
-            ButtonType buttonTypeAdd = new ButtonType("Add");
-            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Image songImg = new Image(getClass().getResourceAsStream("/Image/song.png"));
+            ImageView songImage = new ImageView(songImg);
+            songImage.setFitHeight(60);
+            songImage.setFitWidth(60);
+            songInformation.setGraphic(songImage);
 
-            songInformation.getButtonTypes().setAll(buttonTypeAdd, buttonTypeCancel);
+            Optional<ButtonType> result = songInformation.showAndWait();
 
-            // Checks if song is contained in the LibraryFileIndex class.
-            if (libraryFileIndex.symbolTableSong().contains(query)) {
-                // Get song's information using SET.
-                SET<Song> set = libraryFileIndex.symbolTableSong().get(query);
-                songInformation.setContentText(set.toString());
-                System.out.println("Took " + timer.stop() + " seconds");
+            // Add song to the end of playlist.
+            if (result.isPresent() && result.get() == buttonTypeAdd) {
 
-                Image songImg = new Image(getClass().getResourceAsStream("/Image/song.png"));
-                ImageView songImage = new ImageView(songImg);
-                songImage.setFitHeight(60);
-                songImage.setFitWidth(60);
-                songInformation.setGraphic(songImage);
+                // Get song's information previously stored in set.
+                for (Song s : set) {
+                    Song song = new Song();
 
-                Optional<ButtonType> result = songInformation.showAndWait();
+                    song.setTitle(s.getTitle());
+                    song.setArtist(s.getArtist());
+                    song.setTime(s.getTime());
+                    song.setVideoName(s.getVideoName());
 
-                // Add song to the end of playlist.
-                if (result.isPresent() && result.get() == buttonTypeAdd) {
-
-                    // Get song's information previously stored in set.
-                    for (Song s : set) {
-                        Song song = new Song();
-
-                        song.setTitle(s.getTitle());
-                        song.setArtist(s.getArtist());
-                        song.setTime(s.getTime());
-                        song.setVideoName(s.getVideoName());
-
-                        Playlist.songs.addLast(song);
-                    }
+                    Playlist.songs.addLast(song);
                 }
-            } else {
-                songInformation.setContentText("Not Found!");
-                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-                songInformation.getButtonTypes().setAll(cancel);
-
-                songInformation.showAndWait();
             }
+        } else {
+            songInformation.setContentText("Not Found!");
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Thread.sleep(DELAY);
-        } catch(InterruptedException ex) {
-            System.out.println("Sleep interrupted");
+            songInformation.getButtonTypes().setAll(cancel);
+
+            songInformation.showAndWait();
         }
     }
 
@@ -341,7 +330,7 @@ public class ViewLibrary {
      * The {@code addToLibrary} method is used to get the text entered by the user.
      * It is then stored in the Song object which is added to {@code LibraryFileIndex}
      * class. The title is added as the key in the symbol table.
-     * The Song object is added to a SET which is then written to the library file.
+     * The Song object is added to a DataStructure.SET which is then written to the library file.
      */
     private void addToLibrary() {
         // Validation to check if text entered is null.
@@ -369,10 +358,6 @@ public class ViewLibrary {
             song.setTime(Double.parseDouble(timeInput.getText()));
             song.setVideoName(videoNameInput.getText());
 
-            Stopwatch timer = new Stopwatch();
-
-            timer.start();
-
             // song.getTitle is added as the key in symbol tree.
             ST<String, SET<Song>> st = libraryFileIndex.symbolTableSong();
             st.put(song.getTitle(), new SET<>());
@@ -390,7 +375,6 @@ public class ViewLibrary {
                             "\t" + newSong.getVideoName());
                 }
                 writer.close();
-                System.out.println("Took " + timer.stop() + " seconds");
             } catch (IOException ex) {
                 ErrorBox.error(ex);
             }

@@ -7,6 +7,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
+
 import java.io.File;
 
 /**
@@ -76,6 +78,7 @@ public class Player extends BorderPane {
                     Playlist.songs.removeFirst();
                 } else {
                     Player.songLabel.setText("Empty Playlist");
+                    playMedia("Video/Default.mp4");
                     mediaPlayer.stop();
                 }
             });
