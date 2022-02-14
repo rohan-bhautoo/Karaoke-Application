@@ -10,7 +10,9 @@
 </p>
 
 ## Description
-> A Karaoke Application was designed and implemented using JavaFX where a user will be able to search specific songs from a large number of data and to add new songs to the playlist. See images of the application in the [Screenshot](/Screenshots) folder.
+> A Karaoke Application was designed and implemented using Data Structures and JavaFX where a user will be able to search specific songs from a large number of data and to add new songs to the playlist. See images of the application in the [Screenshot](/Screenshots) folder.
+> 
+> Currently, the [library](/karaokeapp/src/main/java/com/karaokeapp/Library/sample_song_data.txt) has only 4364 songs but it is expected to have over 1 million of songs. Some observations such as the time and space complexity must be taken into consideration before choosing the right data structure. This will determine the order of growth of the application. Implementation of balanced binary search tree data structure was used to store the songs data and its order of growth is ```O(log n)``` where n is the number of songs.
 
 ### 🏠 [Homepage](/karaokeapp/src/main/java/com/karaokeapp/KaraokeApp.java)
 <p align="center">
@@ -47,6 +49,14 @@ set JAVA_HOME="C:\[Path to folder]\Java\jdk-11.0.14
 <p align="center">
   <img height="400" src="https://github.com/rohan-bhautoo/Point-Of-Sales-System/blob/master/Screenshots/Env%20Variable.png">
 </p>
+
+## Data Structure
+
+### Symbol Tree with Red-Black Binary Search Tree (BST)
+
+### Balanced Binary Search Tree (BST)
+
+### Doubly Linked List
 
 ## Usage
 
