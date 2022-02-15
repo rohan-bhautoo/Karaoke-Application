@@ -249,8 +249,9 @@ java --module-path $PATH_TO_FX --add-modules javafx.controls javafx.media Karaok
 ```
 > For Windows:
 ```sh
-java --module-path %PATH_TO_FX% --add-modules javafx.controls javafx.media KaraokeApp.java
+java --module-path %PATH_TO_FX% --add-modules javafx.controls javafx.media KaraokeApp.java --filePath=
 ```
+> where filePath is the Songs Library path
 
 ## Author
 
