@@ -229,7 +229,7 @@ set JAVA_HOME="C:\[Path to folder]\Java\jdk-11.0.14
 </table>
 
 ## Usage
-> Compile all the java file using:
+> Compile all the java files using:
 > 
 > For Linux:
 ```sh
